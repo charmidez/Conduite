@@ -1,0 +1,35 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.PermisDeConduire" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/bluesecond_cobaltturquoise</item>
+        <item name="colorPrimaryDark">@color/bluesecond_cobaltturquoise</item>
+        <item name="colorAccent">@color/green_jadegreen</item>
+        <!-- Customize your theme here. -->
+        <item name="android:fontFamily">@font/ubuntu</item>
+    </style>
+
+
+    <!-- my Theme whithout appbar-->
+    <style name="Theme.PermisDeConduire.Splashscreen" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/bluesecond_cobaltturquoise</item>
+        <item name="colorPrimaryDark">@color/bluesecond_cobaltturquoise</item>
+        <item name="colorAccent">@color/green_jadegreen</item>
+        <!-- Customize your theme here. -->
+        <item name="android:fontFamily">@font/ubuntu</item>
+    </style>
+
+    <style name="Theme.PermisDeConduire.NoActionbar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/bluesecond_cobaltturquoise</item>
+        <item name="colorPrimaryDark">@color/bluesecond_cobaltturquoise</item>
+        <item name="colorAccent">@color/green_jadegreen</item>
+        <!-- Customize your theme here. -->
+        <item name="android:fontFamily">@font/ubuntu</item>
+    </style>
+
+    <style name="switch_btn" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorAccent">@color/red_fireopal</item>
+    </style>
+</resources>

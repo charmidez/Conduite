@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bluedark_gunmetal">#223843</color>
+    <color name="bluesecond_cobaltturquoise">#166D8A</color>
+    <color name="greenblue_mutedturquoise">#24B4A5</color>
+    <color name="green_jadegreen">#8FEDC2</color>
+    <color name="red_fireopal">#EE6352</color>
+    <color name="yellow_yellowochre">#FDD741</color>
+    <color name="white_alabaster">#F4F3EE</color>
+    <color name="white">#FFF</color>
+    <color name="fifty_shade_of_grey">#A9BABF</color>
+</resources>

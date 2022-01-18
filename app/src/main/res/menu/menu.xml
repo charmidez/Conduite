@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_home"
+        android:icon="@drawable/ic_home"
+        android:title="" />
+    <item
+        android:id="@+id/item_course"
+        android:icon="@drawable/ic_courses"
+        android:title="" />
+    <item
+        android:id="@+id/item_panneau"
+        android:icon="@drawable/ic_panneau_signalisation"
+        android:title=""/>
+    <item
+        android:id="@+id/item_exam"
+        android:icon="@drawable/ic_examen"
+        android:title=""/>
+    <item
+        android:id="@+id/item_setting"
+        android:icon="@drawable/ic_setting_light"
+        android:title=""/>
+</menu>
