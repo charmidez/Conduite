@@ -9,17 +9,10 @@
     <string name="qui_sommes_nous">Qui sommes-nous</string>
 
     <!--Menu String-->
-    <string name="course">Cours</string>
-    <string name="home">Accueil</string>
-    <string name="exam">Examen</string>
-    <string name="setting">Paramètres</string>
-    <string name="code">Code</string>
 
-    <string name="give_ur_name">Entrez votre nom</string>
     <string name="qui_sommes_nous_texte">
         Je possède plusieurs années d’expérience dans le developpement informatique, notamment dans le developpement mobile et web. En effet, j’ai acquis une bonne expérience à l’entrée de données et je possède une aisance remarquable avec les dernières versions des technologies android et node. Je suis une personne polyvalente avec une grande capacité d’adaptation. Capable de travailler sous pression et de respecter des délais serrés, je suis convaincu que je pourrais m’adapter rapidement à votre environnement de travail, dans la mésure où nous devrons signer un contrat de travail. Conscient de la diversité de votre clientèle, je vous fais savoir que je maîtrise d\'autres aspect du developpement informatique , ce qui me rend capable de developper des solutions informatiques pointues.
     </string>
-    <string name="title_home_fragment">Home</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

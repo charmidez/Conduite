@@ -12,33 +12,29 @@
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:elevation="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_container"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:elevation="0dp">
+        app:layout_constraintVertical_bias="0.50">
 
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="?attr/actionBarSize"
-            android:id="@+id/toolbar"
             android:background="@color/white"
-            android:theme="@style/Theme.PermisDeConduire"
-            android:elevation="0dp">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            android:elevation="0dp"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/Theme.PermisDeConduire">
 
-                <TextView
-                    android:id="@+id/textView_title_fragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:fontFamily="@font/ubuntu_light"
-                    android:text="Titre"
-                    android:textColor="@color/bluesecond_cobaltturquoise"
-                    android:textSize="@dimen/title_size" />
-            </RelativeLayout>
+            <TextView
+                android:id="@+id/textView_title_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ubuntu_light"
+                android:text="Titre"
+                android:textColor="@color/bluesecond_cobaltturquoise"
+                android:textSize="@dimen/title_size" />
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
@@ -58,9 +54,10 @@
 
     <FrameLayout
         android:id="@+id/fragment_container"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:padding="@dimen/padding_size_in_activity"
+        android:paddingLeft="@dimen/padding_size_in_activity"
+        android:paddingRight="@dimen/padding_size_in_activity"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

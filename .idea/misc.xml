@@ -20,10 +20,11 @@
         <entry key="app/src/main/res/layout/fragment_examen.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_menu.xml" value="0.19583333333333333" />
-        <entry key="app/src/main/res/layout/fragment_panneau.xml" value="0.19583333333333333" />
+        <entry key="app/src/main/res/layout/fragment_panneau.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_profil.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_quisommes_nous.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/item_listview.xml" value="0.25" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/menu/right_menu.xml" value="0.33" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.21197916666666666" />
