@@ -5,22 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import com.amango.permisdeconduire.R
-import com.amango.permisdeconduire.fragments.SettingFragment
-import javax.security.auth.callback.Callback
 
-class AproposFragment : Fragment() {
+class CoursesDetailsFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val v = inflater.inflate(R.layout.fragment_apropos, container, false)
+        val v = inflater.inflate(R.layout.fragment_courses_details, container, false)
 
-
-
-        // Inflate the layout for this fragment
         return v
     }
 }
-
-
-

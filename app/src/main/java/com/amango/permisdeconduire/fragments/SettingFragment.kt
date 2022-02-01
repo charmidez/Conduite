@@ -30,6 +30,7 @@ class SettingFragment : Fragment() {
 
     // Change Fragment
     private val aproposFragment = AproposFragment()
+
     private fun replaceFragment(fragment : Fragment){
         if (fragment !=null){
             val transaction = fragmentManager?.beginTransaction()

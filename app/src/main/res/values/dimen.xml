@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <dimen name="padding_size_in_activity">16dp</dimen>
+    <dimen name="padding_size_in_activity">8dp</dimen>
     <dimen name="bold_text_size">14sp</dimen>
     <dimen name="title_size">16dp</dimen>
+    <dimen name="text_gbalo">12dp</dimen>
+    <dimen name="corner_raduis">10dp</dimen>
+    <dimen name="corner_raduis_courses">8dp</dimen>
+    <dimen name="elevation">4dp</dimen>
+    <dimen name="text_size">10dp</dimen>
+    <dimen name="appBar">32dp</dimen>
 
 </resources>

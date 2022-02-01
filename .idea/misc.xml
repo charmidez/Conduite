@@ -4,27 +4,38 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable-v24/ic_logo_permis_launcher.xml" value="0.21197916666666666" />
+        <entry key="app/src/main/res/drawable/gradiant_background.xml" value="0.19025641025641027" />
+        <entry key="app/src/main/res/drawable/ic_courses.xml" value="0.19025641025641027" />
         <entry key="app/src/main/res/drawable/ic_information.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/drawable/ic_logo_permis.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/drawable/ic_logo_permis_ombre.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/drawable/ic_setting_dark.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/drawable/ic_setting_light.xml" value="0.21197916666666666" />
+        <entry key="app/src/main/res/drawable/ic_splash_screen.xml" value="0.19114583333333332" />
         <entry key="app/src/main/res/drawable/item_bottom_nav_color.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/drawable/padding_size.xml" value="0.21197916666666666" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_setting.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_apropos.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/fragment_courses.xml" value="0.17447916666666666" />
+        <entry key="app/src/main/res/layout/fragment_courses.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_courses_details.xml" value="0.17708333333333334" />
         <entry key="app/src/main/res/layout/fragment_examen.xml" value="0.19583333333333333" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.43270622286541244" />
         <entry key="app/src/main/res/layout/fragment_menu.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/fragment_panneau.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_panneau_details.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_profil.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_quisommes_nous.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.75" />
+        <entry key="app/src/main/res/layout/item_code_conseil.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/item_courses.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_listview.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/item_panneau.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/item_panneau_details.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/item_panneau_type.xml" value="0.43366336633663366" />
+        <entry key="app/src/main/res/layout/item_view_default.xml" value="0.1765625" />
         <entry key="app/src/main/res/menu/menu.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/menu/right_menu.xml" value="0.33" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.21197916666666666" />

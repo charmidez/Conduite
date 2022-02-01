@@ -1,4 +1,10 @@
 <resources>
+    <!-- Menu -->
+    <string name="courses">Cours</string>
+    <string name="panneaux">Panneaux</string>
+    <string name="exam">Examen</string>
+    <string name="settings">Réglages</string>
+
     <string name="app_name">Permis de conduire</string>
     <string name="developper">Charmidez Assiobo</string>
     <string name="dark_mode">Mode Sombre</string>
@@ -8,11 +14,17 @@
     <string name="apropos">A Propos</string>
     <string name="qui_sommes_nous">Qui sommes-nous</string>
 
-    <!--Menu String-->
-
     <string name="qui_sommes_nous_texte">
         Je possède plusieurs années d’expérience dans le developpement informatique, notamment dans le developpement mobile et web. En effet, j’ai acquis une bonne expérience à l’entrée de données et je possède une aisance remarquable avec les dernières versions des technologies android et node. Je suis une personne polyvalente avec une grande capacité d’adaptation. Capable de travailler sous pression et de respecter des délais serrés, je suis convaincu que je pourrais m’adapter rapidement à votre environnement de travail, dans la mésure où nous devrons signer un contrat de travail. Conscient de la diversité de votre clientèle, je vous fais savoir que je maîtrise d\'autres aspect du developpement informatique , ce qui me rend capable de developper des solutions informatiques pointues.
     </string>
-    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="code_conseil_du_jour">Attachez toujours votre ceinture de sécurité</string>
+
+    <string name="app_courses_item">Introduction aux panneau danger</string>
+
+    <string name="score_quizz">Score  Quizz : </string>
+    <string name="progression">Progression</string>
+    <string name="score_total">Score </string>
+
 
 </resources>

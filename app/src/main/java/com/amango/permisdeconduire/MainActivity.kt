@@ -5,11 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.amango.permisdeconduire.fragments.*
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_home.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val homeFragment = HomeFragment()
     private val coursesFragment = CoursesFragment()
     private val panneauFragment = PanneauFragment()
     private val examenFragment = ExamenFragment()
@@ -18,11 +16,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        replaceFragment(homeFragment,"Accueil")
+        replaceFragment(coursesFragment,"Cours")
 
         bottom_navigation.setOnNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.item_home -> replaceFragment(homeFragment, "Accueil" )
+                //R.id.item_home -> replaceFragment(homeFragment, "Accueil" )
                 R.id.item_course -> replaceFragment(coursesFragment, "Cours")
                 R.id.item_panneau -> replaceFragment(panneauFragment,"Panneaux Routiers" )
                 R.id.item_exam -> replaceFragment(examenFragment,"Examen")

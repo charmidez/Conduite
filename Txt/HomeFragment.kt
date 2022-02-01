@@ -21,15 +21,13 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
+
     //ajust Input Mode Code Suite
     override fun onDestroy() {
         super.onDestroy()
         originalMode?.let { activity?.window?.setSoftInputMode(it) }
     }
-
     //ajust Input Mode Code Suite
-    fun Window.getSoftInputMode() : Int {
-        return attributes.softInputMode
-    }
+    fun Window.getSoftInputMode() : Int = attributes.softInputMode
 
 }

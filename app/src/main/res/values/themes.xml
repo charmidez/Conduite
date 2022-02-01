@@ -32,4 +32,5 @@
     <style name="switch_btn" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorAccent">@color/red_fireopal</item>
     </style>
+
 </resources>
