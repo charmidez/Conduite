@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.amango.permisdeconduire.R
 import com.amango.permisdeconduire.adapter.PanneauAdapter
 import com.amango.permisdeconduire.data.PanneauData
@@ -53,7 +54,7 @@ class PanneauFragment : Fragment() {
         if (fragment !=null){
             val transaction = fragmentManager?.beginTransaction()
             transaction?.replace(R.id.fragment_container, fragment)
-            transaction?.addToBackStack("Femerture")
+            transaction?.addToBackStack(null)
             transaction?.commit()
         }
     }
@@ -80,5 +81,6 @@ class PanneauFragment : Fragment() {
         private  val img_5 = R.drawable.img_direction
 
     }
+
 
 }

@@ -54,6 +54,7 @@
         app:itemIconTint="@drawable/item_bottom_nav_color"
         app:labelVisibilityMode="labeled" />
 
+
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="0dp"

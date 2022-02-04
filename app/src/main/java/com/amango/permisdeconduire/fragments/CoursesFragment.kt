@@ -24,19 +24,6 @@ class CoursesFragment : Fragment() {
             CoursesData("Le cours","La description du cours", R.drawable.img_danger),
             CoursesData("Le cours","La description du cours", R.drawable.img_danger),
             CoursesData("Le cours","La description du cours", R.drawable.img_danger),
-            CoursesData("Le cours","La description du cours", R.drawable.img_danger),
-            CoursesData("Le cours","La description du cours", R.drawable.img_danger),
-            CoursesData("Le cours","La description du cours", R.drawable.img_danger),
-            CoursesData("Le cours","La description du cours", R.drawable.img_danger),
-            CoursesData("Le cours","La description du cours", R.drawable.img_danger),
-            CoursesData("Le cours","La description du cours", R.drawable.img_danger),
-            CoursesData("Le cours","La description du cours", R.drawable.img_danger),
-            CoursesData("Le cours","La description du cours", R.drawable.img_danger),
-            CoursesData("Le cours","La description du cours", R.drawable.img_danger),
-            CoursesData("Le cours","La description du cours", R.drawable.img_danger),
-            CoursesData("Le cours","La description du cours", R.drawable.img_danger),
-            CoursesData("Le cours","La description du cours", R.drawable.img_danger),
-            CoursesData("Le cours","La description du cours", R.drawable.img_danger),
             CoursesData("Le cours","La description du cours", R.drawable.img_danger)
         )
 
@@ -47,8 +34,6 @@ class CoursesFragment : Fragment() {
         adapter_list = CoursesAdapter(v.context, R.layout.item_courses,list_item)
 
         v.listView_courses.adapter = adapter_list
-
-
         return v
     }
 }

@@ -18,7 +18,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_setting.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/fragment_apropos.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_apropos.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_courses.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_courses_details.xml" value="0.17708333333333334" />
         <entry key="app/src/main/res/layout/fragment_examen.xml" value="0.19583333333333333" />

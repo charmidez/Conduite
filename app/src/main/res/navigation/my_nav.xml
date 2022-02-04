@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/coursesFragment">
+
+    <fragment
+        android:id="@+id/coursesFragment"
+        android:name="com.amango.permisdeconduire.fragments.CoursesFragment"
+        android:label="fragment_courses"
+        tools:layout="@layout/fragment_courses" >
+        <action
+            android:id="@+id/action_coursesFragment_to_coursesDetailsFragment"
+            app:destination="@id/coursesDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/coursesDetailsFragment"
+        android:name="com.amango.permisdeconduire.fragments.subfragment.CoursesDetailsFragment"
+        android:label="fragment_courses_details"
+        tools:layout="@layout/fragment_courses_details" >
+        <action
+            android:id="@+id/action_coursesDetailsFragment_to_coursesFragment"
+            app:destination="@id/coursesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/panneauFragment"
+        android:name="com.amango.permisdeconduire.fragments.PanneauFragment"
+        android:label="fragment_panneau"
+        tools:layout="@layout/fragment_panneau" >
+        <action
+            android:id="@+id/action_panneauFragment_to_panneauDetailsFragment"
+            app:destination="@id/panneauDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/panneauDetailsFragment"
+        android:name="com.amango.permisdeconduire.fragments.subfragment.PanneauDetailsFragment"
+        android:label="fragment_panneau_details"
+        tools:layout="@layout/fragment_panneau_details" >
+        <action
+            android:id="@+id/action_panneauDetailsFragment_to_panneauFragment"
+            app:destination="@id/panneauFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.amango.permisdeconduire.fragments.SettingFragment"
+        android:label="fragment_setting"
+        tools:layout="@layout/fragment_setting" >
+        <action
+            android:id="@+id/action_settingFragment_to_aproposFragment"
+            app:destination="@id/aproposFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aproposFragment"
+        android:name="com.amango.permisdeconduire.fragments.subfragment.AproposFragment"
+        android:label="fragment_apropos"
+        tools:layout="@layout/fragment_apropos" >
+        <action
+            android:id="@+id/action_aproposFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/examenFragment"
+        android:name="com.amango.permisdeconduire.fragments.ExamenFragment"
+        android:label="fragment_examen"
+        tools:layout="@layout/fragment_examen" />
+</navigation>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "648874699525",
+    "project_id": "permis-de-conduire-charmidez",
+    "storage_bucket": "permis-de-conduire-charmidez.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:648874699525:android:205a39ce97dc22588a256c",
+        "android_client_info": {
+          "package_name": "com.amango.permisdeconduire"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "648874699525-ed4k14fjs93sr0ev4ere5njsibc7bme7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDv7BLkPQ4WOW1vC0nNBge8elw6XhOdxYE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "648874699525-ed4k14fjs93sr0ev4ere5njsibc7bme7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

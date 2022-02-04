@@ -13,7 +13,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
         android:elevation="@dimen/elevation"
-        android:padding="@dimen/padding_size_in_activity"
+        android:padding="4dp"
         app:cardCornerRadius="@dimen/corner_raduis_courses"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
