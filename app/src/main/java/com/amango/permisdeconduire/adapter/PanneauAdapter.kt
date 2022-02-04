@@ -24,7 +24,7 @@ class PanneauAdapter(var mContext : Context,
         val desc_panneau = itemView.textView_description_type_panneau
         val img_panneau = itemView.imageView_type_panneau
 
-        //assignation dans Panneau_type_view
+        //assignation dans Panneau_type_view ok
         titre_panneau.text = panneauType.titreTypePanneau
         desc_panneau.text = panneauType.descriptionTypePanneau
         img_panneau.setImageResource(panneauType.imgTypePanneau)
