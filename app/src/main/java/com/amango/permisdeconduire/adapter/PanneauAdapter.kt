@@ -9,7 +9,8 @@ import com.amango.permisdeconduire.data.PanneauData
 import kotlinx.android.synthetic.main.item_panneau_type.view.*
 import kotlinx.android.synthetic.main.item_panneau.view.*
 
-class PanneauAdapter(var mContext : Context,
+class PanneauAdapter(
+                    var mContext : Context,
                      var ressource : Int,
                      var values : ArrayList<PanneauData>) : ArrayAdapter<PanneauData>(mContext, ressource, values){
 

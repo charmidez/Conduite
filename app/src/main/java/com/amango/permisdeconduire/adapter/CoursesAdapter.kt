@@ -1,15 +1,17 @@
 package com.amango.permisdeconduire.adapter
 
 import android.content.Context
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import com.amango.permisdeconduire.data.CoursesData
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_courses.view.*
-import kotlinx.android.synthetic.main.item_panneau_type.view.*
 
-class CoursesAdapter(var mContext : Context,
+class CoursesAdapter(
+                    var mContext : Context,
                      var ressource : Int,
                      var values : ArrayList<CoursesData>) : ArrayAdapter<CoursesData>(mContext, ressource, values) {
 
@@ -24,7 +26,11 @@ class CoursesAdapter(var mContext : Context,
         val img = itemView.imageView_courses_item
 
         titre_cours.text = courses.titreCours
-        img.setImageResource(courses.imgCours)
+        Glide.with(mContext)
+            .load(Uri.parse(courses.imgCours))
+            .into(itemView.imageView_courses_item)
+
+        //img.setImageResource(courses.imgCours)
 
         return itemView
     }

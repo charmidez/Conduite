@@ -15,7 +15,7 @@ import javax.security.auth.callback.Callback
 
 class AproposFragment : Fragment() {
 
-    private  val imgUrl = "https://cdn.pixabay.com/photo/2021/11/17/11/02/flowers-6803234__340.png"
+    private  val imgUrl = "https://cdn.pixabay.com/photo/2016/02/25/16/33/fruit-1222438_960_720.png"
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
