@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity() {
     private val examenFragment = ExamenFragment()
     private val settingFragment = SettingFragment()
 
-    //private  lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
