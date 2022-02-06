@@ -10,8 +10,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.amango.permisdeconduire.db.DataRepository
 import com.amango.permisdeconduire.fragments.*
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_courses.*
-import kotlinx.android.synthetic.main.item_courses.*
+
 
 class MainActivity : AppCompatActivity() {
 
