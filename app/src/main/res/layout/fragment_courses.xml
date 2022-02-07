@@ -51,7 +51,7 @@
         <ListView
             android:id="@+id/listView_courses"
             android:layout_width="match_parent"
-            android:layout_height="720dp"
+            android:layout_height="wrap_content"
             android:divider="@color/white"
             android:paddingLeft="@dimen/padding_size_in_activity"
             android:layout_marginTop="76dp"

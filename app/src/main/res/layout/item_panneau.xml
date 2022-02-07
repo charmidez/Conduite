@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/padding_size_in_activity"
-            app:srcCompat="@drawable/ok" />
+            app:srcCompat="@drawable/ic_launcher" />
     </com.google.android.material.card.MaterialCardView>
 
     <TextView
