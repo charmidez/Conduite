@@ -8,7 +8,6 @@
     android:paddingRight="@dimen/padding_size_in_activity"
     tools:context=".fragments.subfragment.AproposFragment">
 
-    <!--android:src="@drawable/ic_launcher"-->
     <ImageView
         android:id="@+id/imageView_apropos_net"
         android:layout_width="match_parent"
@@ -16,7 +15,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="4dp"
-        android:contentDescription="image"
+        android:src="@drawable/ic_launcher"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.728"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +28,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="4dp"
-        android:fontFamily="@font/ubuntu_bold"
+        android:fontFamily="@font/source_sans_pro_bold"
         android:text="@string/apropos"
         android:textColor="@color/red_fireopal"
         android:textSize="24dp"
@@ -44,7 +43,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="4dp"
-        android:fontFamily="@font/ubuntu_medium"
+        android:fontFamily="@font/source_sans_pro_semi_bold"
         android:text="@string/qui_sommes_nous_texte"
         android:textColor="@color/bluedark_gunmetal"
         app:layout_constraintEnd_toEndOf="@+id/textView3"

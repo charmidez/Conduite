@@ -19,38 +19,46 @@ class MainActivity : AppCompatActivity() {
     private val examenFragment = ExamenFragment()
     private val settingFragment = SettingFragment()
 
+    //Chargement de notre repository
+    val repo = DataRepository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //Chargement de notre repository
-        val repo = DataRepository()
+
 
         //mise à jour de la base de donnée
-        repo.updateData{
+        repo.updateData {
             replaceFragment(coursesFragment,"Cours")
             bottom_navigation.setOnNavigationItemSelectedListener {
                 when(it.itemId){
-                    R.id.item_course -> replaceFragment(coursesFragment, "Cours")
-                    R.id.item_panneau -> replaceFragment(panneauFragment,"Panneaux Routiers" )
-                    R.id.item_exam -> replaceFragment(examenFragment,"Examen")
-                    R.id.item_setting -> replaceFragment(settingFragment,"Reglages")
+                    R.id.item_course -> {
+                        replaceFragment(coursesFragment, "Cours")
+                        //repo.updateData { replaceFragment(coursesFragment, "Cours")  }
+                    }
+                    R.id.item_panneau -> {
+                        replaceFragment(panneauFragment, "Panneaux Routiers")
+                        //repo.updateData { replaceFragment(panneauFragment, "Panneaux Routiers") }
+                    }
+                    R.id.item_exam -> {
+                        replaceFragment(examenFragment, "Examen")
+                        //repo.updateData { replaceFragment(examenFragment, "Examen") }
+                    }
+                    R.id.item_setting -> {
+                        replaceFragment(settingFragment, "Reglages")
+                    }
                 }
                 true
-            }
-        }
-
+            } }
     }
 
     private fun replaceFragment(fragment : Fragment, title_fragment : String){
-        if (fragment !=null){
-            val transaction = supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragment_container, fragment)
-            textView_title_fragment.setText(title_fragment)
-            transaction.commit()
-        }
+            if (fragment !=null){
+                val transaction = supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.fragment_container, fragment)
+                textView_title_fragment.setText(title_fragment)
+                transaction.commit()
+            }
     }
-
-
 }

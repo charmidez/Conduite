@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.fragment_panneau.view.*
 
 class PanneauFragment : Fragment() {
 
+    private val detailspanneauFragment = PanneauDetailsFragment()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v : View = inflater.inflate(R.layout.fragment_panneau, container, false)
 
@@ -32,11 +33,9 @@ class PanneauFragment : Fragment() {
             detailspanneauFragment.arguments = bundles
             replaceFragment(detailspanneauFragment)
         }
-
         return v
     }
 
-    private val detailspanneauFragment = PanneauDetailsFragment()
 
     private fun replaceFragment(fragment : Fragment){
         if (fragment !=null){

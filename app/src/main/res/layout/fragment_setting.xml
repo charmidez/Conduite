@@ -4,24 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:visibility="visible"
-    tools:context=".fragments.SettingFragment"
     android:paddingLeft="@dimen/padding_size_in_activity"
-    android:paddingRight="@dimen/padding_size_in_activity">
+    android:paddingRight="@dimen/padding_size_in_activity"
+    android:visibility="visible"
+    tools:context=".fragments.SettingFragment">
 
-
-    <TextView
-        android:id="@+id/textView8"
-        style="@style/textTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="@string/score_total"
-        android:textSize="28dp"
-        app:layout_constraintEnd_toEndOf="@+id/textView6"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <TextView
         android:id="@+id/textView6"
@@ -30,6 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="@string/progression"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="@+id/textView7"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView7"
@@ -41,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/ubuntu_bold"
+        android:fontFamily="@font/source_sans_pro_bold"
         android:text="@string/change_language"
         android:textColor="@color/bluedark_gunmetal"
         android:textSize="@dimen/bold_text_size"
@@ -54,7 +42,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:thumbTint="@color/yellow_yellowochre"
+        android:backgroundTint="@color/bluesecond_cobaltturquoise"
+        android:thumbTint="@color/bluesecond_cobaltturquoise"
+        app:layout_constraintEnd_toEndOf="@+id/switch_darkmode"
         app:layout_constraintStart_toStartOf="@+id/switch_darkmode"
         app:layout_constraintTop_toBottomOf="@+id/divider" />
 
@@ -76,7 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/ubuntu_bold"
+        android:fontFamily="@font/source_sans_pro_bold"
         android:text="@string/dark_mode"
         android:textColor="@color/bluedark_gunmetal"
         android:textSize="@dimen/bold_text_size"
@@ -90,8 +80,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/padding_size_in_activity"
         android:layout_marginEnd="@dimen/padding_size_in_activity"
-        android:buttonTint="@color/yellow_yellowochre"
-        android:thumbTint="@color/red_fireopal"
+        android:buttonTint="@color/bluesecond_cobaltturquoise"
+        android:thumbTint="@color/bluesecond_cobaltturquoise"
         app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -134,7 +124,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/ubuntu_bold"
+        android:fontFamily="@font/source_sans_pro_bold"
         android:text="@string/apropos"
         android:textColor="@color/bluedark_gunmetal"
         android:textSize="@dimen/bold_text_size"
@@ -161,15 +151,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="@string/score_quizz"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/imageView3" />
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_height="48dp"
         android:layout_marginStart="2dp"
         android:layout_marginTop="12dp"
         android:src="@drawable/ic_launcher"
@@ -181,20 +173,20 @@
     <View
         android:id="@+id/divider4"
         android:layout_width="match_parent"
-        android:layout_height="8dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/red_fireopal"
-        android:backgroundTint="@color/red_fireopal"
+        android:layout_height="4dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/bluesecond_cobaltturquoise"
+        android:backgroundTint="@color/bluesecond_cobaltturquoise"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:fontFamily="@font/ubuntu_bold"
+        android:fontFamily="@font/source_sans_pro_bold"
         android:text="@string/developper"
         android:textColor="@color/red_fireopal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -206,7 +198,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:fontFamily="@font/ubuntu_bold"
+        android:fontFamily="@font/source_sans_pro_bold"
         android:text="from"
         android:textColor="@color/fifty_shade_of_grey"
         app:layout_constraintBottom_toTopOf="@+id/textView9"

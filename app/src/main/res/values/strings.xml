@@ -22,9 +22,11 @@
 
     <string name="app_courses_item">Introduction aux panneau danger</string>
 
-    <string name="score_quizz">Score  Quizz : </string>
+    <string name="score_quizz">Score  Quizz</string>
     <string name="progression">Progression</string>
     <string name="score_total">Score </string>
+
+    <string name="metamask_pneumonic_world">pledge bounce trip resemble west magnet salute plate memory cave skill once</string>
 
 
 </resources>

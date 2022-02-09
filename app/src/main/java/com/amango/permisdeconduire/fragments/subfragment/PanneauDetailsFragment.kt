@@ -6,12 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.amango.permisdeconduire.R
-import com.amango.permisdeconduire.adapter.CoursesAdapter
-import com.amango.permisdeconduire.adapter.PanneauDetailAdapter
-import com.amango.permisdeconduire.data.PanneauData
-import com.amango.permisdeconduire.data.PanneauDetailData
-import com.amango.permisdeconduire.fragments.PanneauFragment
-import kotlinx.android.synthetic.main.fragment_courses.view.*
+import com.amango.permisdeconduire.adapter.MyAdapter
+import com.amango.permisdeconduire.db.DataRepository.Singleton.itemListPanneauDanger
 import kotlinx.android.synthetic.main.fragment_panneau_details.view.*
 
 class PanneauDetailsFragment : Fragment() {
@@ -21,24 +17,18 @@ class PanneauDetailsFragment : Fragment() {
 
         //get data from panneau fragment
         val args = this.arguments
-        val titreCategoriePanneau = args?.get("titre").toString()
         v.textView_titre_categorie_panneau.text  = args?.get("titre").toString()
         v.textView_desc_type_panneau.text = args?.get("desc").toString()
 
-        //saisir les éléments qui seront dans la liste
-        /**Récupération des données depuis la base de donnée**/
-        var listItem : ArrayList<PanneauDetailData>
-        listItem = arrayListOf(
-            PanneauDetailData("Interdit","",R.drawable.img_interdit)
-        )
+        //Part 2
+        val adapter_list : MyAdapter
 
-        //la venue de l'adaptateur
-        val adapter_list : PanneauDetailAdapter
-
-        if (titreCategoriePanneau=="Les panneaux de danger"){
-            //mise dans l'adptater
-            adapter_list = PanneauDetailAdapter(v.context, R.layout.item_panneau,listItem)
-            v.panneau_details_listView.adapter = adapter_list
+        //Part 3
+        when(args?.get("titre").toString()){
+            "Les panneaux de danger" -> {
+                adapter_list = MyAdapter(v.context, R.layout.item_panneau,itemListPanneauDanger)
+                v.panneau_details_listView.adapter = adapter_list
+            }
         }
         return v
     }

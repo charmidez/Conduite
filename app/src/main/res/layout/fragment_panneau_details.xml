@@ -13,7 +13,7 @@
         android:id="@+id/textView_titre_categorie_panneau"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/ubuntu_bold"
+        android:fontFamily="@font/source_sans_pro_bold"
         android:text="Type De Panneau"
         android:textColor="@color/bluesecond_cobaltturquoise"
         android:textSize="@dimen/title_size"

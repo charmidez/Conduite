@@ -12,6 +12,7 @@ import com.amango.permisdeconduire.R
 import com.amango.permisdeconduire.data.Data
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_courses.view.*
+import kotlinx.android.synthetic.main.item_panneau.view.*
 import kotlinx.android.synthetic.main.item_panneau_type.view.*
 
 class MyAdapter(
@@ -36,7 +37,6 @@ class MyAdapter(
                 img = iView.imageView_type_panneau
                 title = iView.textView_titre_type_panneau
                 desc = iView.textView_description_type_panneau
-
                 //push data into in
                 title.text = data.title
                 Glide.with(mContext)
@@ -44,16 +44,24 @@ class MyAdapter(
                     .into(img)
                 desc.text = data.desc
             }
+
             R.layout.item_courses -> {
                 title = iView.textView_titre_course_item
                 img = iView.imageView_courses_item
-
-                //push data into in
                 title.text = data.title
                 Glide.with(mContext)
                     .load(Uri.parse(data.imgUrl))
                     .into(img)
                 //desc.text = data.description
+            }
+
+            R.layout.item_panneau ->{
+                title = iView.textView_panneau
+                img = iView.imageView_panneau
+                title.text = data.title
+                Glide.with(mContext)
+                    .load(Uri.parse(data.imgUrl))
+                    .into(img)
             }
         }
         return iView

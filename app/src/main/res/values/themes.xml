@@ -6,7 +6,7 @@
         <item name="colorPrimaryDark">@color/bluesecond_cobaltturquoise</item>
         <item name="colorAccent">@color/green_jadegreen</item>
         <!-- Customize your theme here. -->
-        <item name="android:fontFamily">@font/ubuntu</item>
+        <item name="android:fontFamily">@font/source_sans_pro_regular</item>
     </style>
 
 
@@ -17,7 +17,7 @@
         <item name="colorPrimaryDark">@color/bluesecond_cobaltturquoise</item>
         <item name="colorAccent">@color/green_jadegreen</item>
         <!-- Customize your theme here. -->
-        <item name="android:fontFamily">@font/ubuntu</item>
+        <item name="android:fontFamily">@font/source_sans_pro_regular</item>
     </style>
 
     <style name="Theme.PermisDeConduire.NoActionbar" parent="Theme.AppCompat.Light.NoActionBar">
@@ -26,7 +26,7 @@
         <item name="colorPrimaryDark">@color/bluesecond_cobaltturquoise</item>
         <item name="colorAccent">@color/green_jadegreen</item>
         <!-- Customize your theme here. -->
-        <item name="android:fontFamily">@font/ubuntu</item>
+        <item name="android:fontFamily">@font/source_sans_pro_regular</item>
     </style>
 
     <style name="switch_btn" parent="Theme.AppCompat.Light.DarkActionBar">

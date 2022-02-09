@@ -24,21 +24,13 @@
             android:id="@+id/textView_title_fragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/ubuntu_bold"
-            android:text="Titre"
+            android:fontFamily="@font/source_sans_pro_bold"
+            android:text=""
             android:padding="@dimen/padding_size_in_activity"
             android:gravity="center"
             android:textColor="@color/white_alabaster"
             android:textSize="@dimen/title_size" />
 
-        <!--androidx.appcompat.widget.Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:elevation="0dp"
-            android:minHeight="@dimen/appBar"
-            android:theme="@style/Theme.PermisDeConduire">
-        </androidx.appcompat.widget.Toolbar-->
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

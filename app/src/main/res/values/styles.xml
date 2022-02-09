@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="textTitle">
-        <item name="android:fontFamily">@font/ubuntu_bold</item>
+        <item name="android:fontFamily">@font/source_sans_pro_bold</item>
         <item name="android:textSize">@dimen/title_size</item>
         <item name="android:textColor">@color/bluesecond_cobaltturquoise</item>
     </style>
 
     <style name="textMidTitle">
-        <item name="android:fontFamily">@font/ubuntu_medium</item>
+        <item name="android:fontFamily">@font/source_sans_pro_semi_bold</item>
         <item name="android:textSize">@dimen/bold_text_size</item>
         <item name="android:textColor">@color/bluesecond_cobaltturquoise</item>
     </style>
 
     <style name="textGbalo">
-        <item name="android:fontFamily">@font/ubuntu_light</item>
+        <item name="android:fontFamily">@font/source_sans_pro_light</item>
         <item name="android:textSize">@dimen/text_gbalo</item>
         <item name="android:textColor">@color/bluesecond_cobaltturquoise</item>
     </style>
