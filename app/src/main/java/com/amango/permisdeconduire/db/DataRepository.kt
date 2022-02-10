@@ -3,7 +3,9 @@ package com.amango.permisdeconduire.db
 import com.amango.permisdeconduire.data.Data
 import com.amango.permisdeconduire.db.DataRepository.Singleton.dbCoursesList
 import com.amango.permisdeconduire.db.DataRepository.Singleton.dbPanneauDangerList
+import com.amango.permisdeconduire.db.DataRepository.Singleton.dbQuizzQuestion
 import com.amango.permisdeconduire.db.DataRepository.Singleton.dbtypePanneau
+import com.amango.permisdeconduire.db.DataRepository.Singleton.itemExam
 import com.amango.permisdeconduire.db.DataRepository.Singleton.itemListCourses
 import com.amango.permisdeconduire.db.DataRepository.Singleton.itemListPanneauDanger
 import com.amango.permisdeconduire.db.DataRepository.Singleton.itemListPanneauType
@@ -19,11 +21,13 @@ class DataRepository {
         val dbtypePanneau = FirebaseDatabase.getInstance().getReference("Panneaux")
         val dbCoursesList = FirebaseDatabase.getInstance().getReference("Cours")
         val dbPanneauDangerList = FirebaseDatabase.getInstance().getReference("Danger")
+        val dbQuizzQuestion = FirebaseDatabase.getInstance().getReference("Examen")
 
-        //créér une listPanneau
+        //créér une d'élement des contenus
         val itemListPanneauType = arrayListOf<Data>()
         val itemListCourses = arrayListOf<Data>()
         val itemListPanneauDanger = arrayListOf<Data>()
+        val itemExam = arrayListOf<Data>()
     }
         fun updateData(callback : () -> Unit) {
 
@@ -77,12 +81,10 @@ class DataRepository {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     //faire le ménage
                     itemListPanneauDanger .clear()
-
                     //recolter la liste
                     for (ds in snapshot.children){
                         //Construction d'une donnée
                         val data = ds.getValue(Data::class.java)
-
                         //is it null ?
                         if(data !=null){
                             itemListPanneauDanger .add(data)
@@ -95,6 +97,30 @@ class DataRepository {
 
                 }
             })
+
+            //les question in quizz
+            dbQuizzQuestion.addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    //faire le ménage
+                    itemExam .clear()
+                    //recolter la liste
+                    for (ds in snapshot.children){
+                        //Construction d'une donnée
+                        val data = ds.getValue(Data::class.java)
+                        //is it null ?
+                        if(data !=null){
+                            itemExam.add(data)
+                        }
+                    }
+                    //le callback
+                    callback()
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
+
 
         }
 }

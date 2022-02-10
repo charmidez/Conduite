@@ -20,8 +20,8 @@ class AproposFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_apropos, container, false)
-        
-        // Inflate the layout for this fragment
+       Glide.with(v.context).load(imgUrl).into(v.imageView_apropos_net)
+
         return v
     }
 }

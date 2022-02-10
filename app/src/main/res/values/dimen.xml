@@ -11,4 +11,6 @@
     <dimen name="appBar">32dp</dimen>
     <dimen name="coursImg">128dp</dimen>
 
+    <dimen name="question_text_size">20dp</dimen>
+
 </resources>

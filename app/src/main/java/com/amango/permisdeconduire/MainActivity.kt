@@ -2,12 +2,14 @@ package com.amango.permisdeconduire
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.amango.permisdeconduire.db.DataRepository
+import com.amango.permisdeconduire.db.DataRepository.Singleton.itemExam
 import com.amango.permisdeconduire.fragments.*
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -35,15 +37,14 @@ class MainActivity : AppCompatActivity() {
                 when(it.itemId){
                     R.id.item_course -> {
                         replaceFragment(coursesFragment, "Cours")
-                        //repo.updateData { replaceFragment(coursesFragment, "Cours")  }
+                        val sz = itemExam.size
+                        Log.i("Taille du truc","$sz")
                     }
                     R.id.item_panneau -> {
                         replaceFragment(panneauFragment, "Panneaux Routiers")
-                        //repo.updateData { replaceFragment(panneauFragment, "Panneaux Routiers") }
                     }
                     R.id.item_exam -> {
                         replaceFragment(examenFragment, "Examen")
-                        //repo.updateData { replaceFragment(examenFragment, "Examen") }
                     }
                     R.id.item_setting -> {
                         replaceFragment(settingFragment, "Reglages")

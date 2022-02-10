@@ -29,4 +29,10 @@
     <string name="metamask_pneumonic_world">pledge bounce trip resemble west magnet salute plate memory cave skill once</string>
 
 
+    <!-- Quizz of -->
+    <string name="question">Quelles sont les différentes signalisations Routières</string>
+    <string name="option1">La signalisation Verticale, Horizontale, Lumineuses et les signes des Agents</string>
+    <string name="option2">Les intersections en X, en Y, et en T</string>
+    <string name="option3">Les lignes continues les lignes discontinues et les lignes mixtes.</string>
+    <string name="option4">Option 4</string>
 </resources>
