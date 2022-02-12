@@ -18,6 +18,7 @@ import com.amango.permisdeconduire.data.Data
 import com.amango.permisdeconduire.db.DataRepository.Singleton.itemExam
 import com.bumptech.glide.Glide
 import com.google.android.play.core.appupdate.v
+import com.google.firebase.database.collection.LLRBNode
 import kotlinx.android.synthetic.main.fragment_examen.*
 import kotlinx.android.synthetic.main.fragment_examen.view.*
 
@@ -76,10 +77,18 @@ class ExamenFragment : Fragment(), View.OnClickListener {
 
         setQuizz()
 
+        //1
         v.textView_optionOne.setOnClickListener(this)
+        v.cardView_optionOne.setOnClickListener(this)
+        //2
         v.textView_optionTwo.setOnClickListener(this)
+        v.cardView_optionTwo.setOnClickListener(this)
+        //3
         v.textView_optionThree.setOnClickListener(this)
+        v.cardView_optionThree.setOnClickListener(this)
+        //4
         v.textView_optionFour.setOnClickListener(this)
+        v.cardView_optionFour
 
         return v
     }
@@ -88,16 +97,16 @@ class ExamenFragment : Fragment(), View.OnClickListener {
         when(v?.id){
 
             R.id.textView_optionOne -> {
-                selectedOptionView(textView_optionOne,1)
+                selectedOptionView(cardView_optionOne, textView_optionOne,1)
             }
             R.id.textView_optionTwo -> {
-                selectedOptionView(textView_optionTwo,2)
+                selectedOptionView(cardView_optionTwo, textView_optionTwo,2)
             }
             R.id.textView_optionThree -> {
-                selectedOptionView(textView_optionThree,3)
+                selectedOptionView(cardView_optionThree, textView_optionThree,3)
             }
             R.id.textView_optionFour -> {
-                selectedOptionView(textView_optionFour,4)
+                selectedOptionView(cardView_optionFour, textView_optionFour,4)
             }
             R.id.button_subimt -> {
 
@@ -122,11 +131,13 @@ class ExamenFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    private fun selectedOptionView (tv : TextView, selectedOptionNum : Int){
+    private fun selectedOptionView (cv : CardView, tv : TextView, selectedOptionNum : Int){
         defaultOptionView()
         mCurrentPosition = selectedOptionNum
         tv.setTypeface(tv.typeface, Typeface.BOLD)
         tv.setTextColor(Color.parseColor("#08894E"))
+
+        cv.setCardBackgroundColor(Color.parseColor("#08894E"))
     }
 
 }
