@@ -23,4 +23,10 @@
         <item name="android:radius">@dimen/corner_raduis</item>
         <item name="android:elevation">@dimen/elevation</item>
     </style>
+
+    <style name="progressBar_style">
+
+
+    </style>
+
 </resources>

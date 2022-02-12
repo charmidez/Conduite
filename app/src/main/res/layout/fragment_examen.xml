@@ -12,7 +12,20 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingBottom="16dp">
+
+        <View
+            android:id="@+id/divider_exam"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white_alabaster"
+            android:backgroundTint="@color/white_alabaster"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/textView_question"
@@ -26,7 +39,7 @@
             android:textColor="@color/white_alabaster"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/divider_exam" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView_img"
@@ -45,6 +58,39 @@
 
         </androidx.cardview.widget.CardView>
 
+        <LinearLayout
+            android:id="@+id/linearLayout_progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:layout_margin="8dp"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView_img">
+            <ProgressBar
+                android:id="@+id/progressBar_level_quizz"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="?android:progressBarStyleHorizontal"
+                android:minHeight="50dp"
+                android:max="20"
+                android:progress="0"
+                android:indeterminateTintMode="src_atop"
+                android:indeterminateTint="@color/bluesecond_cobaltturquoise"
+                />
+            <TextView
+                android:id="@+id/textView_progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="0/20"
+                style="@style/textTitle"
+                android:textSize="8dp"
+                android:indeterminate="true"
+                android:paddingLeft="8dp"/>
+        </LinearLayout>
+
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView_optionOne"
             android:layout_width="match_parent"
@@ -55,7 +101,7 @@
             app:cardCornerRadius="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView_img">
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout_progressBar">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -70,6 +116,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
+                    style="@style/textMidTitle"
+                    android:id="@+id/textView_optionOne"
                     android:text="@string/option1" />
             </LinearLayout>
 
@@ -100,6 +148,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
+                    style="@style/textMidTitle"
+                    android:id="@+id/textView_optionTwo"
                     android:text="@string/option2" />
             </LinearLayout>
 
@@ -130,6 +180,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
+                    style="@style/textMidTitle"
+                    android:id="@+id/textView_optionThree"
                     android:text="@string/option3" />
             </LinearLayout>
 
@@ -160,9 +212,29 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
+                    style="@style/textMidTitle"
+                    android:id="@+id/textView_optionFour"
                     android:text="@string/option1" />
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/button_subimt"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="24dp"
+            android:text="Soumettre"
+            android:textColor="@color/white_alabaster"
+            android:fontFamily="@font/source_sans_pro_bold"
+            android:textAllCaps="false"
+            android:textSize="@dimen/bold_text_size"
+            android:background="@drawable/rounded_buttonview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView_optionFour"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
