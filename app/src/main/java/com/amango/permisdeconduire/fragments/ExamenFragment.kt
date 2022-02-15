@@ -1,7 +1,6 @@
 package com.amango.permisdeconduire.fragments
 
-import android.content.Context
-import android.content.res.ColorStateList
+import android.animation.ObjectAnimator
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
@@ -13,12 +12,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import com.amango.permisdeconduire.R
 import com.amango.permisdeconduire.data.Data
 import com.amango.permisdeconduire.db.DataRepository.Singleton.itemExam
 import com.bumptech.glide.Glide
-import com.google.android.play.core.appupdate.v
-import com.google.firebase.database.collection.LLRBNode
 import kotlinx.android.synthetic.main.fragment_examen.*
 import kotlinx.android.synthetic.main.fragment_examen.view.*
 
@@ -26,10 +25,13 @@ class ExamenFragment : Fragment(), View.OnClickListener {
 
     private var itemQuizz : ArrayList<Data>?  = null
     private var mCurrentPosition :Int = 1
+    private var mSelectedOptionPosition = 0
 
     private var setQuizz = fun(){}
     private var defaultOptionView = fun(){}
-    private var selectedOptionView = fun(){}
+    private var selectButtonView = fun(){}
+
+    //private var correctrep = itemQuizz!![mCurrentPosition - 1].rep
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_examen, container, false)
@@ -37,21 +39,33 @@ class ExamenFragment : Fragment(), View.OnClickListener {
 
         //function
         defaultOptionView = fun(){
-            val options = ArrayList<TextView>()
-            options.add(0,textView_optionOne)
-            options.add(1,textView_optionTwo)
-            options.add(2,textView_optionThree)
-            options.add(3,textView_optionFour)
+            val cardView_options = ArrayList<CardView>()
+            val textView_options = ArrayList<TextView>()
+            cardView_options.add(0,v.cardView_optionOne)
+            textView_options.add(0,v.textView_optionOne)
+            cardView_options.add(1,v.cardView_optionTwo)
+            textView_options.add(1,v.textView_optionTwo)
+            cardView_options.add(2,v.cardView_optionThree)
+            textView_options.add(2,v.textView_optionThree)
+            cardView_options.add(3,v.cardView_optionFour)
+            textView_options.add(3,v.textView_optionFour)
+            v.button_submit.setTextColor(Color.parseColor("#166D8A"))
+            v.button_submit.text = "Choisissez La bonne réponse"
+            v.button_submit.setBackgroundColor(Color.parseColor("#00FFFFFF"))
 
-            for (option in options){
-                //option.setCardBackgroundColor(Color.parseColor("FF08894E"))
-                //option.typeface = Typeface.DEFAULT_BOLD
+            for (option in cardView_options){
+                option.setCardBackgroundColor(Color.parseColor("#F4F3EE"))
+                option.setElevation(8F)
             }
+            for (option in textView_options){
+                option.setTextColor(Color.parseColor("#166D8A"))
+            }
+
         }
 
+        //function
         setQuizz = fun(){
             mCurrentPosition = 1
-
             defaultOptionView()
 
             val questionQuizz = itemQuizz!![mCurrentPosition - 1].title
@@ -61,8 +75,10 @@ class ExamenFragment : Fragment(), View.OnClickListener {
             val optionThree = itemQuizz!![mCurrentPosition - 1].optionThree
             val optionFour = itemQuizz!![mCurrentPosition - 1].optionFour
 
+
             v.progressBar_level_quizz.progress = mCurrentPosition
             v.textView_progressBar.text = "$mCurrentPosition" + "/" + v.progressBar_level_quizz.max
+            //Log.i("textView_progressBar", v.textView_progressBar.text.toString())
 
             v.textView_question.text = questionQuizz
             Glide.with(v.context)
@@ -77,18 +93,11 @@ class ExamenFragment : Fragment(), View.OnClickListener {
 
         setQuizz()
 
-        //1
-        v.textView_optionOne.setOnClickListener(this)
         v.cardView_optionOne.setOnClickListener(this)
-        //2
-        v.textView_optionTwo.setOnClickListener(this)
         v.cardView_optionTwo.setOnClickListener(this)
-        //3
-        v.textView_optionThree.setOnClickListener(this)
         v.cardView_optionThree.setOnClickListener(this)
-        //4
-        v.textView_optionFour.setOnClickListener(this)
-        v.cardView_optionFour
+        v.cardView_optionFour.setOnClickListener(this)
+        v.button_submit.setOnClickListener(this)
 
         return v
     }
@@ -96,48 +105,87 @@ class ExamenFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when(v?.id){
 
-            R.id.textView_optionOne -> {
+            R.id.cardView_optionOne -> {
                 selectedOptionView(cardView_optionOne, textView_optionOne,1)
             }
-            R.id.textView_optionTwo -> {
+            R.id.cardView_optionTwo -> {
                 selectedOptionView(cardView_optionTwo, textView_optionTwo,2)
             }
-            R.id.textView_optionThree -> {
+            R.id.cardView_optionThree -> {
                 selectedOptionView(cardView_optionThree, textView_optionThree,3)
             }
-            R.id.textView_optionFour -> {
+            R.id.cardView_optionFour -> {
                 selectedOptionView(cardView_optionFour, textView_optionFour,4)
             }
-            R.id.button_subimt -> {
+            R.id.button_submit -> {
+                //Log.i("Chinois", "${itemQuizz!![mCurrentPosition - 1].optionThree}")
+                if(mSelectedOptionPosition == 0){
+                    mCurrentPosition ++
+
+                    when{mCurrentPosition <= itemQuizz!!.size ->
+                        {
+                            setQuizz()
+                            Toast.makeText(v.context, "Vraie Réponse",Toast.LENGTH_LONG).show()
+                        }else ->
+                        {
+                            Toast.makeText(v.context, "Fausse Réponse",Toast.LENGTH_LONG).show()
+                        }
+                    }
+
+                    Log.i("mCurrentPosition",mCurrentPosition.toString())
+                }
+                else {
+                    val question = itemQuizz!![mCurrentPosition -1 ]
+                    if (question.rep == mSelectedOptionPosition){
+                        answerView(mSelectedOptionPosition)
+                    } else answerView(question.toString().toInt())
+                }
 
             }
+
         }
     }
 
-    private fun answerView(answer : Int, drawableView : Int){
+    private fun answerView(answer : Int){
         when(answer){
             1 -> {
-
+                answerOptionView(cardView_optionOne, textView_optionOne,1)
             }
             2 -> {
-
+                answerOptionView(cardView_optionTwo, textView_optionTwo,2)
             }
             3 -> {
-
+                answerOptionView(cardView_optionOne, textView_optionThree,3)
             }
             4 -> {
-
+                answerOptionView(cardView_optionOne, textView_optionFour,4)
             }
         }
     }
 
     private fun selectedOptionView (cv : CardView, tv : TextView, selectedOptionNum : Int){
         defaultOptionView()
-        mCurrentPosition = selectedOptionNum
+        mSelectedOptionPosition = selectedOptionNum
         tv.setTypeface(tv.typeface, Typeface.BOLD)
-        tv.setTextColor(Color.parseColor("#08894E"))
+        tv.setTextColor(Color.parseColor("#F4F3EE"))
+
+        cv.setCardBackgroundColor(Color.parseColor("#31F4F3EE"))
+        cv.setElevation(1F)
+
+        button_submit.setBackgroundResource(R.drawable.rounded_buttonview)
+        button_submit.text = "Soumettre La Proposition"
+        button_submit.setTextColor(Color.parseColor("#F4F3EE"))
+    }
+
+    private fun answerOptionView (cv : CardView, tv : TextView, selectedOptionNum : Int){
+        defaultOptionView()
+        mSelectedOptionPosition = selectedOptionNum
+        Log.i("mSelectedOptionPosition",mSelectedOptionPosition.toString())
+        tv.setTypeface(tv.typeface, Typeface.BOLD)
+        tv.setTextColor(Color.parseColor("#F4F3EE"))
 
         cv.setCardBackgroundColor(Color.parseColor("#08894E"))
+        cv.setElevation(0F)
     }
 
 }

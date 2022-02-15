@@ -9,4 +9,6 @@
     <color name="white">#FFF</color>
     <color name="fifty_shade_of_grey">#A9BABF</color>
     <color name="green_okquizz">#08894E</color>
+
+    <color name="grey">#31F4F3EE</color>
 </resources>
