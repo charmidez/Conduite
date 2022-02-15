@@ -1,6 +1,5 @@
 package com.amango.permisdeconduire.fragments
 
-import android.animation.ObjectAnimator
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
@@ -12,8 +11,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
-import androidx.core.view.isInvisible
-import androidx.core.view.isVisible
 import com.amango.permisdeconduire.R
 import com.amango.permisdeconduire.data.Data
 import com.amango.permisdeconduire.db.DataRepository.Singleton.itemExam
@@ -25,7 +22,7 @@ class ExamenFragment : Fragment(), View.OnClickListener {
 
     private var itemQuizz : ArrayList<Data>?  = null
     private var mCurrentPosition :Int = 1
-    private var mSelectedOptionPosition = 0
+    private var mSelectedOption = 0
 
     private var setQuizz = fun(){}
     private var defaultOptionView = fun(){}
@@ -65,7 +62,8 @@ class ExamenFragment : Fragment(), View.OnClickListener {
 
         //function
         setQuizz = fun(){
-            mCurrentPosition = 1
+            //mCurrentPosition = 1
+            mSelectedOption = 0
             defaultOptionView()
 
             val questionQuizz = itemQuizz!![mCurrentPosition - 1].title
@@ -118,8 +116,23 @@ class ExamenFragment : Fragment(), View.OnClickListener {
                 selectedOptionView(cardView_optionFour, textView_optionFour,4)
             }
             R.id.button_submit -> {
-                //Log.i("Chinois", "${itemQuizz!![mCurrentPosition - 1].optionThree}")
-                if(mSelectedOptionPosition == 0){
+                if (mSelectedOption != 0){
+                    if(mSelectedOption==itemQuizz!![mCurrentPosition].rep){
+                        //Toast.makeText(v.context, "mSelectOption : $mSelectedOption",Toast.LENGTH_LONG).show()
+                    } else if (mSelectedOption!=itemQuizz!![mCurrentPosition].rep) {
+                        wrongAnswerView(mSelectedOption)
+                    }
+                    val correct = itemQuizz!![mCurrentPosition].rep.toString().toInt()
+                    answerView(correct)
+                    nextQuestion()
+                    mSelectedOption = 0
+                }else {
+                    mCurrentPosition ++
+                    setQuizz()
+                }
+
+                /*
+                if(mSelectedOption == 0){
                     mCurrentPosition ++
 
                     when{mCurrentPosition <= itemQuizz!!.size ->
@@ -136,11 +149,11 @@ class ExamenFragment : Fragment(), View.OnClickListener {
                 }
                 else {
                     val question = itemQuizz!![mCurrentPosition -1 ]
-                    if (question.rep == mSelectedOptionPosition){
-                        answerView(mSelectedOptionPosition)
+                    if (question.rep == mSelectedOption){
+                        answerView(mSelectedOption)
                     } else answerView(question.toString().toInt())
                 }
-
+                */
             }
 
         }
@@ -149,23 +162,31 @@ class ExamenFragment : Fragment(), View.OnClickListener {
     private fun answerView(answer : Int){
         when(answer){
             1 -> {
-                answerOptionView(cardView_optionOne, textView_optionOne,1)
+                answerOptionView(cardView_optionOne, textView_optionOne)
             }
             2 -> {
-                answerOptionView(cardView_optionTwo, textView_optionTwo,2)
+                answerOptionView(cardView_optionTwo, textView_optionTwo)
             }
             3 -> {
-                answerOptionView(cardView_optionOne, textView_optionThree,3)
+                answerOptionView(cardView_optionThree, textView_optionThree)
             }
             4 -> {
-                answerOptionView(cardView_optionOne, textView_optionFour,4)
+                answerOptionView(cardView_optionFour, textView_optionFour)
             }
+        }
+    }
+    private fun wrongAnswerView(wronganswer : Int){
+        when(wronganswer){
+            1 -> wrongAnswerOptionView(cardView_optionOne, textView_optionOne)
+            2 -> wrongAnswerOptionView(cardView_optionTwo, textView_optionTwo)
+            3 -> wrongAnswerOptionView(cardView_optionThree, textView_optionThree)
+            4 -> wrongAnswerOptionView(cardView_optionFour, textView_optionFour)
         }
     }
 
     private fun selectedOptionView (cv : CardView, tv : TextView, selectedOptionNum : Int){
         defaultOptionView()
-        mSelectedOptionPosition = selectedOptionNum
+        mSelectedOption = selectedOptionNum
         tv.setTypeface(tv.typeface, Typeface.BOLD)
         tv.setTextColor(Color.parseColor("#F4F3EE"))
 
@@ -175,17 +196,28 @@ class ExamenFragment : Fragment(), View.OnClickListener {
         button_submit.setBackgroundResource(R.drawable.rounded_buttonview)
         button_submit.text = "Soumettre La Proposition"
         button_submit.setTextColor(Color.parseColor("#F4F3EE"))
+
+        //Log.i("mSelectOption", mSelectedOptionPosition.toString())
     }
 
-    private fun answerOptionView (cv : CardView, tv : TextView, selectedOptionNum : Int){
-        defaultOptionView()
-        mSelectedOptionPosition = selectedOptionNum
-        Log.i("mSelectedOptionPosition",mSelectedOptionPosition.toString())
+    //viewUpdateFunction
+    private fun answerOptionView (cv : CardView, tv : TextView){
         tv.setTypeface(tv.typeface, Typeface.BOLD)
         tv.setTextColor(Color.parseColor("#F4F3EE"))
+        cv.setCardBackgroundColor(Color.parseColor("#5FAD41"))
+        cv.setElevation(8F)
+    }
+    private fun wrongAnswerOptionView (cv : CardView, tv : TextView){
+        tv.setTypeface(tv.typeface, Typeface.BOLD)
+        tv.setTextColor(Color.parseColor("#F4F3EE"))
+        cv.setCardBackgroundColor(Color.parseColor("#EE6352"))
+        cv.setElevation(8F)
+    }
 
-        cv.setCardBackgroundColor(Color.parseColor("#08894E"))
-        cv.setElevation(0F)
+    private fun nextQuestion(){
+        button_submit.setBackgroundResource(R.drawable.rounded_buttonview_nextquestion)
+        button_submit.text = "Question Suivante"
+        button_submit.setTextColor(Color.parseColor("#F4F3EE"))
     }
 
 }
