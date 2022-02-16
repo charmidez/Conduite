@@ -62,7 +62,6 @@ class ExamenFragment : Fragment(), View.OnClickListener {
 
         //function
         setQuizz = fun(){
-            //mCurrentPosition = 1
             mSelectedOption = 0
             defaultOptionView()
 
@@ -73,10 +72,8 @@ class ExamenFragment : Fragment(), View.OnClickListener {
             val optionThree = itemQuizz!![mCurrentPosition - 1].optionThree
             val optionFour = itemQuizz!![mCurrentPosition - 1].optionFour
 
-
             v.progressBar_level_quizz.progress = mCurrentPosition
             v.textView_progressBar.text = "$mCurrentPosition" + "/" + v.progressBar_level_quizz.max
-            //Log.i("textView_progressBar", v.textView_progressBar.text.toString())
 
             v.textView_question.text = questionQuizz
             Glide.with(v.context)
@@ -118,7 +115,6 @@ class ExamenFragment : Fragment(), View.OnClickListener {
             R.id.button_submit -> {
                 if (mSelectedOption != 0){
                     if(mSelectedOption==itemQuizz!![mCurrentPosition].rep){
-                        //Toast.makeText(v.context, "mSelectOption : $mSelectedOption",Toast.LENGTH_LONG).show()
                     } else if (mSelectedOption!=itemQuizz!![mCurrentPosition].rep) {
                         wrongAnswerView(mSelectedOption)
                     }
@@ -131,29 +127,6 @@ class ExamenFragment : Fragment(), View.OnClickListener {
                     setQuizz()
                 }
 
-                /*
-                if(mSelectedOption == 0){
-                    mCurrentPosition ++
-
-                    when{mCurrentPosition <= itemQuizz!!.size ->
-                        {
-                            setQuizz()
-                            Toast.makeText(v.context, "Vraie Réponse",Toast.LENGTH_LONG).show()
-                        }else ->
-                        {
-                            Toast.makeText(v.context, "Fausse Réponse",Toast.LENGTH_LONG).show()
-                        }
-                    }
-
-                    Log.i("mCurrentPosition",mCurrentPosition.toString())
-                }
-                else {
-                    val question = itemQuizz!![mCurrentPosition -1 ]
-                    if (question.rep == mSelectedOption){
-                        answerView(mSelectedOption)
-                    } else answerView(question.toString().toInt())
-                }
-                */
             }
 
         }
