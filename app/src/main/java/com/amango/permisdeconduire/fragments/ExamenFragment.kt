@@ -3,13 +3,11 @@ package com.amango.permisdeconduire.fragments
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.cardview.widget.CardView
 import com.amango.permisdeconduire.R
 import com.amango.permisdeconduire.data.Data
@@ -26,9 +24,6 @@ class ExamenFragment : Fragment(), View.OnClickListener {
 
     private var setQuizz = fun(){}
     private var defaultOptionView = fun(){}
-    private var selectButtonView = fun(){}
-
-    //private var correctrep = itemQuizz!![mCurrentPosition - 1].rep
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_examen, container, false)
@@ -74,7 +69,6 @@ class ExamenFragment : Fragment(), View.OnClickListener {
 
             v.progressBar_level_quizz.progress = mCurrentPosition
             v.textView_progressBar.text = "$mCurrentPosition" + "/" + v.progressBar_level_quizz.max
-
             v.textView_question.text = questionQuizz
             Glide.with(v.context)
                 .load(imgQuizzUrl)
@@ -85,21 +79,17 @@ class ExamenFragment : Fragment(), View.OnClickListener {
             v.textView_optionThree.text = optionThree
             v.textView_optionFour.text = optionFour
         }
-
         setQuizz()
-
         v.cardView_optionOne.setOnClickListener(this)
         v.cardView_optionTwo.setOnClickListener(this)
         v.cardView_optionThree.setOnClickListener(this)
         v.cardView_optionFour.setOnClickListener(this)
         v.button_submit.setOnClickListener(this)
-
         return v
     }
 
     override fun onClick(v: View?) {
         when(v?.id){
-
             R.id.cardView_optionOne -> {
                 selectedOptionView(cardView_optionOne, textView_optionOne,1)
             }
@@ -126,9 +116,7 @@ class ExamenFragment : Fragment(), View.OnClickListener {
                     mCurrentPosition ++
                     setQuizz()
                 }
-
             }
-
         }
     }
 
@@ -148,6 +136,7 @@ class ExamenFragment : Fragment(), View.OnClickListener {
             }
         }
     }
+
     private fun wrongAnswerView(wronganswer : Int){
         when(wronganswer){
             1 -> wrongAnswerOptionView(cardView_optionOne, textView_optionOne)
@@ -173,13 +162,13 @@ class ExamenFragment : Fragment(), View.OnClickListener {
         //Log.i("mSelectOption", mSelectedOptionPosition.toString())
     }
 
-    //viewUpdateFunction
     private fun answerOptionView (cv : CardView, tv : TextView){
         tv.setTypeface(tv.typeface, Typeface.BOLD)
         tv.setTextColor(Color.parseColor("#F4F3EE"))
         cv.setCardBackgroundColor(Color.parseColor("#5FAD41"))
         cv.setElevation(8F)
     }
+
     private fun wrongAnswerOptionView (cv : CardView, tv : TextView){
         tv.setTypeface(tv.typeface, Typeface.BOLD)
         tv.setTextColor(Color.parseColor("#F4F3EE"))
@@ -192,6 +181,5 @@ class ExamenFragment : Fragment(), View.OnClickListener {
         button_submit.text = "Question Suivante"
         button_submit.setTextColor(Color.parseColor("#F4F3EE"))
     }
-
 }
 
