@@ -37,8 +37,6 @@ class MainActivity : AppCompatActivity() {
                 when(it.itemId){
                     R.id.item_course -> {
                         replaceFragment(coursesFragment, "Cours")
-                        val sz = itemExam.size
-                        Log.i("Taille du truc","$sz")
                     }
                     R.id.item_panneau -> {
                         replaceFragment(panneauFragment, "Panneaux Routiers")
