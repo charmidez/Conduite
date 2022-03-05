@@ -46,7 +46,6 @@
         app:itemIconTint="@drawable/item_bottom_nav_color"
         app:labelVisibilityMode="labeled" />
 
-
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="0dp"
@@ -54,8 +53,30 @@
         android:paddingLeft="0dp"
         android:paddingRight="0dp"
         android:background="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintBottom_toTopOf="@+id/adView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" >
+
+        <TextView
+            android:id="@+id/textView_chargement"
+            android:layout_width="match_parent"
+            android:layout_height="204dp"
+            android:text="@string/loading"
+            android:textAlignment="center"
+            android:textColor="@color/grey_loading"
+            android:fontFamily="@font/source_sans_pro_regular"
+            android:gravity="center"
+            android:textSize="20dp"/>
+    </FrameLayout>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

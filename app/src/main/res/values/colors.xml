@@ -10,8 +10,12 @@
     <color name="fifty_shade_of_grey">#A9BABF</color>
     <color name="green_okquizz">#32DE8A</color>
     <color name="true_rep">#5FAD41</color>
+    <color name="grey_loading">#B8B8B8</color>
 
     <color name="grey">#31F4F3EE</color>
 
     <color name="next_blue">#779CAB</color>
+
+    <color name="transparent">#00FFFFFF</color>
+    <color name="transparent_pop_up">#8BFFFFFF</color>
 </resources>

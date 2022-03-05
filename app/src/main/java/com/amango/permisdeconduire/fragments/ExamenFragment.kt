@@ -1,5 +1,6 @@
 package com.amango.permisdeconduire.fragments
-
+import android.app.AlertDialog
+import android.app.Dialog
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
@@ -13,8 +14,11 @@ import com.amango.permisdeconduire.R
 import com.amango.permisdeconduire.data.Data
 import com.amango.permisdeconduire.db.DataRepository.Singleton.itemExam
 import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_examen.*
 import kotlinx.android.synthetic.main.fragment_examen.view.*
+import kotlinx.android.synthetic.main.popup_congratulation.*
+import kotlinx.android.synthetic.main.popup_congratulation.view.*
 
 class ExamenFragment : Fragment(), View.OnClickListener {
 
@@ -22,8 +26,13 @@ class ExamenFragment : Fragment(), View.OnClickListener {
     private var mCurrentPosition :Int = 1
     private var mSelectedOption = 0
 
+    private var scoreNote = 0
+
     private var setQuizz = fun(){}
     private var defaultOptionView = fun(){}
+
+    private var initailize = fun(){
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_examen, container, false)
@@ -85,6 +94,13 @@ class ExamenFragment : Fragment(), View.OnClickListener {
         v.cardView_optionThree.setOnClickListener(this)
         v.cardView_optionFour.setOnClickListener(this)
         v.button_submit.setOnClickListener(this)
+
+        initailize = fun (){
+            mCurrentPosition  = 1
+            mSelectedOption = 0
+            setQuizz()
+        }
+
         return v
     }
 
@@ -105,6 +121,7 @@ class ExamenFragment : Fragment(), View.OnClickListener {
             R.id.button_submit -> {
                 if (mSelectedOption != 0){
                     if(mSelectedOption==itemQuizz!![mCurrentPosition].rep){
+                        scoreNote++
                     } else if (mSelectedOption!=itemQuizz!![mCurrentPosition].rep) {
                         wrongAnswerView(mSelectedOption)
                     }
@@ -113,8 +130,14 @@ class ExamenFragment : Fragment(), View.OnClickListener {
                     nextQuestion()
                     mSelectedOption = 0
                 }else {
-                    mCurrentPosition ++
-                    setQuizz()
+                    if (mCurrentPosition <= 4){
+                        mCurrentPosition ++
+                        setQuizz()
+                    } else {
+                        popUpActivation()
+                        //fun to initialize
+                    }
+
                 }
             }
         }
@@ -158,8 +181,6 @@ class ExamenFragment : Fragment(), View.OnClickListener {
         button_submit.setBackgroundResource(R.drawable.rounded_buttonview)
         button_submit.text = "Soumettre La Proposition"
         button_submit.setTextColor(Color.parseColor("#F4F3EE"))
-
-        //Log.i("mSelectOption", mSelectedOptionPosition.toString())
     }
 
     private fun answerOptionView (cv : CardView, tv : TextView){
@@ -181,5 +202,27 @@ class ExamenFragment : Fragment(), View.OnClickListener {
         button_submit.text = "Question Suivante"
         button_submit.setTextColor(Color.parseColor("#F4F3EE"))
     }
+
+    private fun popUpActivation(){
+        val v = View.inflate(context,R.layout.popup_congratulation, null)
+        val  builder = AlertDialog.Builder(context)
+        builder.setView(v)
+        var score_obtenu_to_string = "$scoreNote /$mCurrentPosition"
+        v.score_obtenu.text = score_obtenu_to_string
+        val dialog = builder.create()
+        dialog.show()
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        initailize()
+    }
+
+    private fun replaceFragment(fragment : Fragment){
+        if (fragment !=null){
+            val transaction = fragmentManager?.beginTransaction()
+            transaction?.replace(R.id.fragment_container, fragment)
+            transaction?.addToBackStack(null)
+            transaction?.commit()
+        }
+    }
+
 }
 

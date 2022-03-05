@@ -26,6 +26,8 @@
     <string name="progression">Progression</string>
     <string name="score_total">Score </string>
 
+    <string name="loading">Chargement...</string>
+
     <string name="metamask_pneumonic_world">pledge bounce trip resemble west magnet salute plate memory cave skill once</string>
 
 
@@ -35,4 +37,6 @@
     <string name="option2">Les intersections en X, en Y, et en T</string>
     <string name="option3">Les lignes continues les lignes discontinues et les lignes mixtes.</string>
     <string name="option4">Option 4</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
