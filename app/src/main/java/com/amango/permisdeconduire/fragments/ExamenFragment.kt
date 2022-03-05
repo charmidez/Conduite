@@ -130,12 +130,11 @@ class ExamenFragment : Fragment(), View.OnClickListener {
                     nextQuestion()
                     mSelectedOption = 0
                 }else {
-                    if (mCurrentPosition <= 4){
+                    if (mCurrentPosition <= 19){
                         mCurrentPosition ++
                         setQuizz()
                     } else {
                         popUpActivation()
-                        //fun to initialize
                     }
 
                 }
