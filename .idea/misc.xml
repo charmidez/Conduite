@@ -9,6 +9,8 @@
         <entry key="app/src/main/res/drawable/background_pop_up.xml" value="0.1705" />
         <entry key="app/src/main/res/drawable/correct_answer.xml" value="0.206" />
         <entry key="app/src/main/res/drawable/gradiant_background.xml" value="0.19025641025641027" />
+        <entry key="app/src/main/res/drawable/gridview_item_background.xml" value="0.179" />
+        <entry key="app/src/main/res/drawable/gridview_validate_item_background.xml" value="0.179" />
         <entry key="app/src/main/res/drawable/ic_courses.xml" value="0.19025641025641027" />
         <entry key="app/src/main/res/drawable/ic_information.xml" value="0.21197916666666666" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.21197916666666666" />
@@ -28,21 +30,23 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_setting.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/fragment_apropos.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_courses.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_apropos.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_courses.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_courses_details.xml" value="0.4994640943193998" />
-        <entry key="app/src/main/res/layout/fragment_examen.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_examen.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_examen_quiz.xml" value="0.19583333333333333" />
+        <entry key="app/src/main/res/layout/fragment_examen_quizz.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.43270622286541244" />
         <entry key="app/src/main/res/layout/fragment_menu.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/fragment_panneau.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_panneau_details.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_profil.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_quisommes_nous.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.22" />
         <entry key="app/src/main/res/layout/item_code_conseil.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_courses.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_exam.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/item_grid.xml" value="0.19635416666666666" />
         <entry key="app/src/main/res/layout/item_listview.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_panneau.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_panneau_details.xml" value="0.67" />

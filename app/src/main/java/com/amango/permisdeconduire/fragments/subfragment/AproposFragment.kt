@@ -15,12 +15,8 @@ import javax.security.auth.callback.Callback
 
 class AproposFragment : Fragment() {
 
-    private  val imgUrl = "https://cdn.pixabay.com/photo/2016/02/25/16/33/fruit-1222438_960_720.png"
-
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_apropos, container, false)
-       Glide.with(v.context).load(imgUrl).into(v.imageView_apropos_net)
 
         return v
     }

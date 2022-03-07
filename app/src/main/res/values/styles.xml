@@ -18,6 +18,12 @@
         <item name="android:textColor">@color/bluesecond_cobaltturquoise</item>
     </style>
 
+    <style name="textGridview">
+        <item name="android:fontFamily">@font/source_sans_pro_bold</item>
+        <item name="android:textSize">84dp</item>
+        <item name="android:textColor">@color/grey_loading</item>
+    </style>
+
     <!--image_design-->
     <style name="imageRadius_corner">
         <item name="android:radius">@dimen/corner_raduis</item>

@@ -1,77 +1,27 @@
-package com.amango.permisdeconduire.fragments
+package com.amango.permisdeconduire.fragments.subfragment
+
 import android.app.AlertDialog
-import android.app.Dialog
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import com.amango.permisdeconduire.R
-import com.amango.permisdeconduire.adapter.MyAdapter
-import com.amango.permisdeconduire.adapter.MyGridAdapter
 import com.amango.permisdeconduire.data.Data
-import com.amango.permisdeconduire.data.DataGridChar
 import com.amango.permisdeconduire.db.DataRepository
-import com.amango.permisdeconduire.db.DataRepository.Singleton.itemExam
-import com.amango.permisdeconduire.fragments.subfragment.ExamenQuizzFragment
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_examen.*
 import kotlinx.android.synthetic.main.fragment_examen.view.*
-import kotlinx.android.synthetic.main.popup_congratulation.*
+import kotlinx.android.synthetic.main.fragment_examen_quizz.*
+import kotlinx.android.synthetic.main.fragment_examen_quizz.view.*
 import kotlinx.android.synthetic.main.popup_congratulation.view.*
 
-class ExamenFragment : Fragment() {
+class ExamenQuizzFragment : Fragment(), View.OnClickListener {
 
-    //private var gridView : GridView ? = null
-    //private var charValues : ArrayList<DataGridChar>? = null
-    //private var myGridAdapter : MyGridAdapter? = null
-
-    private var examenQuizz = ExamenQuizzFragment()
-    private val repo = DataRepository()
-
-    private fun setDataChar() : ArrayList<DataGridChar>{
-        var charValues : ArrayList<DataGridChar> = ArrayList()
-        charValues.add(DataGridChar("A"))
-        charValues.add(DataGridChar("B"))
-        charValues.add(DataGridChar("C"))
-        charValues.add(DataGridChar("D"))
-
-        return charValues
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?  {
-        var v = inflater.inflate(R.layout.fragment_examen, container, false)
-
-        var myGridAdapter : MyGridAdapter
-
-        var charValues : ArrayList<DataGridChar>
-
-        charValues = setDataChar()
-        myGridAdapter = MyGridAdapter(v.context,charValues!!)
-        v.gridView_layout_id.adapter = myGridAdapter
-
-        Log.i("ok","$")
-
-        return v
-    }
-
-    private fun replaceFragment(fragment : Fragment){
-        if (fragment !=null){
-            val transaction = fragmentManager?.beginTransaction()
-            transaction?.replace(R.id.fragment_container, fragment)
-            transaction?.addToBackStack(null)
-            transaction?.commit()
-        }
-    }
-
-    /*
     private var itemQuizz : ArrayList<Data>?  = null
     private var mCurrentPosition :Int = 1
     private var mSelectedOption = 0
@@ -82,8 +32,8 @@ class ExamenFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val v = inflater.inflate(R.layout.fragment_examen, container, false)
-        itemQuizz = itemExam
+        var v = inflater.inflate(R.layout.fragment_examen_quizz, container, false)
+        itemQuizz = DataRepository.Singleton.itemExam
 
         //function
         defaultOptionView = fun(){
@@ -147,7 +97,6 @@ class ExamenFragment : Fragment() {
             mSelectedOption = 0
             setQuizz()
         }
-
         return v
     }
 
@@ -253,7 +202,7 @@ class ExamenFragment : Fragment() {
         val v = View.inflate(context,R.layout.popup_congratulation, null)
         val  builder = AlertDialog.Builder(context)
         builder.setView(v)
-        var score_obtenu_to_string = "$scoreNote /$mCurrentPosition"
+        var score_obtenu_to_string = "$scoreNote /${progressBar_level_quizz.max}"
         v.score_obtenu.text = score_obtenu_to_string
         val dialog = builder.create()
         dialog.show()
@@ -261,14 +210,4 @@ class ExamenFragment : Fragment() {
         initailize()
     }
 
-    private fun replaceFragment(fragment : Fragment){
-        if (fragment !=null){
-            val transaction = fragmentManager?.beginTransaction()
-            transaction?.replace(R.id.fragment_container, fragment)
-            transaction?.addToBackStack(null)
-            transaction?.commit()
-        }
-    }
- */
 }
-

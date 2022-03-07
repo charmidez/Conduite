@@ -7,27 +7,56 @@ import android.view.View
 import android.view.ViewGroup
 import com.amango.permisdeconduire.R
 import com.amango.permisdeconduire.adapter.MyAdapter
+import com.amango.permisdeconduire.db.DataRepository
 import com.amango.permisdeconduire.db.DataRepository.Singleton.itemListPanneauDanger
+import com.amango.permisdeconduire.db.DataRepository.Singleton.itemListPanneauDirection
+import com.amango.permisdeconduire.db.DataRepository.Singleton.itemListPanneauIndication
+import com.amango.permisdeconduire.db.DataRepository.Singleton.itemListPanneauInterdit
+import com.amango.permisdeconduire.db.DataRepository.Singleton.itemListPanneauObligation
 import kotlinx.android.synthetic.main.fragment_panneau_details.view.*
 
 class PanneauDetailsFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_panneau_details, container, false)
+        val repo = DataRepository()
 
-        //get data from panneau fragment
         val args = this.arguments
+        var idTypePanneaux = args?.getInt("id")
         v.textView_titre_categorie_panneau.text  = args?.get("titre").toString()
         v.textView_desc_type_panneau.text = args?.get("desc").toString()
 
-        //Part 2
-        val adapter_list : MyAdapter
-
-        //Part 3
-        when(args?.get("titre").toString()){
-            "Les panneaux de danger" -> {
-                adapter_list = MyAdapter(v.context, R.layout.item_panneau,itemListPanneauDanger)
-                v.panneau_details_listView.adapter = adapter_list
+        var adapter_list : MyAdapter
+        when(idTypePanneaux){
+            1 -> {
+                repo.updateDataPanneauDanger {
+                    adapter_list = MyAdapter(v.context, R.layout.item_panneau,itemListPanneauDanger)
+                    v.panneau_details_listView.adapter = adapter_list
+                }
+            }
+            2 -> {
+                repo.updateDataPanneauIndication {
+                    adapter_list = MyAdapter(v.context, R.layout.item_panneau, itemListPanneauIndication)
+                    v.panneau_details_listView.adapter = adapter_list
+                }
+            }
+            3 -> {
+                repo.updateDataPanneauInterdit {
+                    adapter_list = MyAdapter(v.context, R.layout.item_panneau, itemListPanneauInterdit)
+                    v.panneau_details_listView.adapter = adapter_list
+                }
+            }
+            4 -> {
+                repo.updateDataPanneauObligation {
+                    adapter_list = MyAdapter(v.context, R.layout.item_panneau, itemListPanneauObligation)
+                    v.panneau_details_listView.adapter = adapter_list
+                }
+            }
+            5 -> {
+                repo.updateDataPanneauDirection {
+                    adapter_list = MyAdapter(v.context, R.layout.item_panneau, itemListPanneauDirection)
+                    v.panneau_details_listView.adapter = adapter_list
+                }
             }
         }
         return v

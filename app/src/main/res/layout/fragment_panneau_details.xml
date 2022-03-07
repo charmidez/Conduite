@@ -1,55 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayout_panneau_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/padding_size_in_activity"
-    android:paddingRight="@dimen/padding_size_in_activity"
+    android:fillViewport="false"
     tools:context=".fragments.subfragment.PanneauDetailsFragment" >
 
-    <TextView
-        android:id="@+id/textView_titre_categorie_panneau"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/source_sans_pro_bold"
-        android:text="Type De Panneau"
-        android:textColor="@color/bluesecond_cobaltturquoise"
-        android:textSize="@dimen/title_size"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout_panneau_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/padding_size_in_activity"
+        android:paddingRight="@dimen/padding_size_in_activity">
 
-    <TextView
-        android:id="@+id/textView_desc_type_panneau"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Description"
-        style="@style/textGbalo"
-        app:layout_constraintEnd_toEndOf="@+id/textView_titre_categorie_panneau"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView_titre_categorie_panneau"
-        app:layout_constraintTop_toBottomOf="@+id/textView_titre_categorie_panneau" />
+        <TextView
+            android:id="@+id/textView_titre_categorie_panneau"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_size_in_activity"
+            android:fontFamily="@font/source_sans_pro_bold"
+            android:text="Type De Panneau"
+            android:textColor="@color/bluesecond_cobaltturquoise"
+            android:textSize="@dimen/title_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/adView_fragment_panneau_details_top" />
 
-    <View
-        android:id="@+id/divider3"
-        android:layout_width="409dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="8dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintEnd_toEndOf="@+id/textView_desc_type_panneau"
-        app:layout_constraintStart_toStartOf="@+id/textView_desc_type_panneau"
-        app:layout_constraintTop_toBottomOf="@+id/textView_desc_type_panneau" />
+        <TextView
+            android:id="@+id/textView_desc_type_panneau"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Description"
+            style="@style/textGbalo"
+            app:layout_constraintEnd_toEndOf="@+id/textView_titre_categorie_panneau"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView_titre_categorie_panneau"
+            app:layout_constraintTop_toBottomOf="@+id/textView_titre_categorie_panneau" />
 
-    <ListView
-        android:id="@+id/panneau_details_listView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider3" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="409dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="@+id/textView_desc_type_panneau"
+            app:layout_constraintStart_toStartOf="@+id/textView_desc_type_panneau"
+            app:layout_constraintTop_toBottomOf="@+id/textView_desc_type_panneau" />
+
+        <ListView
+            android:id="@+id/panneau_details_listView"
+            android:layout_width="match_parent"
+            android:layout_height="800dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider3" />
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView_fragment_panneau_details_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:adSize="BANNER"
+            app:adUnitId="ca-app-pub-3940256099942544/6300978111"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toRightOf="parent" />
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView_fragment_panneau_details_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:adSize="BANNER"
+            app:adUnitId="ca-app-pub-3940256099942544/6300978111"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintLeft_toRightOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

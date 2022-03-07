@@ -12,7 +12,6 @@ import com.amango.permisdeconduire.fragments.subfragment.PanneauDetailsFragment
 import kotlinx.android.synthetic.main.fragment_panneau.view.*
 
 class PanneauFragment : Fragment() {
-
     private val detailspanneauFragment = PanneauDetailsFragment()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v : View = inflater.inflate(R.layout.fragment_panneau, container, false)
@@ -24,18 +23,17 @@ class PanneauFragment : Fragment() {
         adapter_list = MyAdapter(v.context, R.layout.item_panneau_type,itemListPanneauType)
         v.listView_panneau.adapter = adapter_list
 
-
         v.listView_panneau.setOnItemClickListener {adpterView, view, position, id ->
             val bundles = Bundle()
             val clickedPost = itemListPanneauType [position]
             bundles.putString("titre", clickedPost.title)
             bundles.putString("desc",clickedPost.desc)
+            clickedPost.id?.let { bundles.putInt("id", it) }
             detailspanneauFragment.arguments = bundles
             replaceFragment(detailspanneauFragment)
         }
         return v
     }
-
 
     private fun replaceFragment(fragment : Fragment){
         if (fragment !=null){
