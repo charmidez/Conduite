@@ -1,53 +1,59 @@
 package com.amango.permisdeconduire.fragments
-import android.app.AlertDialog
-import android.app.Dialog
-import android.graphics.Color
-import android.graphics.Typeface
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridView
-import android.widget.TextView
-import androidx.cardview.widget.CardView
 import com.amango.permisdeconduire.R
-import com.amango.permisdeconduire.adapter.MyAdapter
 import com.amango.permisdeconduire.adapter.MyGridAdapter
-import com.amango.permisdeconduire.data.Data
 import com.amango.permisdeconduire.data.DataGridChar
-import com.amango.permisdeconduire.db.DataRepository
-import com.amango.permisdeconduire.db.DataRepository.Singleton.itemExam
 import com.amango.permisdeconduire.fragments.subfragment.ExamenQuizzFragment
-import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_examen.*
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.fragment_examen.view.*
-import kotlinx.android.synthetic.main.popup_congratulation.*
-import kotlinx.android.synthetic.main.popup_congratulation.view.*
 
 class ExamenFragment : Fragment() {
 
-    //private var gridView : GridView ? = null
-    //private var charValues : ArrayList<DataGridChar>? = null
-    //private var myGridAdapter : MyGridAdapter? = null
-
-    private var examenQuizz = ExamenQuizzFragment()
-    private val repo = DataRepository()
+    private var examenQuizzFragment = ExamenQuizzFragment()
 
     private fun setDataChar() : ArrayList<DataGridChar>{
         var charValues : ArrayList<DataGridChar> = ArrayList()
-        charValues.add(DataGridChar("A"))
-        charValues.add(DataGridChar("B"))
-        charValues.add(DataGridChar("C"))
-        charValues.add(DataGridChar("D"))
+        charValues.add(DataGridChar("A",1))
+        charValues.add(DataGridChar("B",2))
+        charValues.add(DataGridChar("C",41))
+        charValues.add(DataGridChar("D",61))
+        charValues.add(DataGridChar("E",81))
+        charValues.add(DataGridChar("F",101))
+        charValues.add(DataGridChar("G",121))
+        charValues.add(DataGridChar("H",141))
+        charValues.add(DataGridChar("I",161))
+        charValues.add(DataGridChar("J",181))
+        charValues.add(DataGridChar("K",201))
+        charValues.add(DataGridChar("L",221))
+        charValues.add(DataGridChar("M",241))
+        charValues.add(DataGridChar("N",261))
+        charValues.add(DataGridChar("O",281))
+        charValues.add(DataGridChar("P",301))
+        charValues.add(DataGridChar("Q",321))
+        charValues.add(DataGridChar("R",341))
+        charValues.add(DataGridChar("S",361))
+        charValues.add(DataGridChar("T",401))
+        charValues.add(DataGridChar("U",421))
+        charValues.add(DataGridChar("V",441))
+        charValues.add(DataGridChar("W",461))
+        charValues.add(DataGridChar("X",481))
+        charValues.add(DataGridChar("Y",501))
+        charValues.add(DataGridChar("Z",521))
 
         return charValues
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?  {
         var v = inflater.inflate(R.layout.fragment_examen, container, false)
+
+        MobileAds.initialize(v.context)
+        val adRequest = AdRequest.Builder().build()
+        v.adView_fragment_examen_bottom.loadAd(adRequest)
 
         var myGridAdapter : MyGridAdapter
 
@@ -57,8 +63,16 @@ class ExamenFragment : Fragment() {
         myGridAdapter = MyGridAdapter(v.context,charValues!!)
         v.gridView_layout_id.adapter = myGridAdapter
 
-        Log.i("ok","$")
+        v.gridView_layout_id.setOnItemClickListener { parent, view, position, id ->
+            val bundles = Bundle()
+            val clickedId = charValues[position]
+            clickedId.niveau.let { bundles.putInt("niveau", it!!)
 
+            }
+            examenQuizzFragment.arguments = bundles
+
+            replaceFragment(examenQuizzFragment)
+        }
         return v
     }
 
@@ -71,204 +85,5 @@ class ExamenFragment : Fragment() {
         }
     }
 
-    /*
-    private var itemQuizz : ArrayList<Data>?  = null
-    private var mCurrentPosition :Int = 1
-    private var mSelectedOption = 0
-    private var scoreNote = 0
-    private var setQuizz = fun(){}
-    private var defaultOptionView = fun(){}
-    private var initailize = fun(){
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val v = inflater.inflate(R.layout.fragment_examen, container, false)
-        itemQuizz = itemExam
-
-        //function
-        defaultOptionView = fun(){
-            val cardView_options = ArrayList<CardView>()
-            val textView_options = ArrayList<TextView>()
-            cardView_options.add(0,v.cardView_optionOne)
-            textView_options.add(0,v.textView_optionOne)
-            cardView_options.add(1,v.cardView_optionTwo)
-            textView_options.add(1,v.textView_optionTwo)
-            cardView_options.add(2,v.cardView_optionThree)
-            textView_options.add(2,v.textView_optionThree)
-            cardView_options.add(3,v.cardView_optionFour)
-            textView_options.add(3,v.textView_optionFour)
-            v.button_submit.setTextColor(Color.parseColor("#166D8A"))
-            v.button_submit.text = "Choisissez La bonne réponse"
-            v.button_submit.setBackgroundColor(Color.parseColor("#00FFFFFF"))
-
-            for (option in cardView_options){
-                option.setCardBackgroundColor(Color.parseColor("#F4F3EE"))
-                option.setElevation(8F)
-            }
-            for (option in textView_options){
-                option.setTextColor(Color.parseColor("#166D8A"))
-            }
-
-        }
-
-        //function
-        setQuizz = fun(){
-            mSelectedOption = 0
-            defaultOptionView()
-
-            val questionQuizz = itemQuizz!![mCurrentPosition - 1].title
-            val imgQuizzUrl = itemQuizz!![mCurrentPosition -1].imgUrl
-            val optionOne = itemQuizz!![mCurrentPosition - 1].optionOne
-            val optionTwo = itemQuizz!![mCurrentPosition - 1].optionTwo
-            val optionThree = itemQuizz!![mCurrentPosition - 1].optionThree
-            val optionFour = itemQuizz!![mCurrentPosition - 1].optionFour
-
-            v.progressBar_level_quizz.progress = mCurrentPosition
-            v.textView_progressBar.text = "$mCurrentPosition" + "/" + v.progressBar_level_quizz.max
-            v.textView_question.text = questionQuizz
-            Glide.with(v.context)
-                .load(imgQuizzUrl)
-                .centerCrop()
-                .into(v.imageView_question)
-            v.textView_optionOne.text = optionOne
-            v.textView_optionTwo.text = optionTwo
-            v.textView_optionThree.text = optionThree
-            v.textView_optionFour.text = optionFour
-        }
-        setQuizz()
-        v.cardView_optionOne.setOnClickListener(this)
-        v.cardView_optionTwo.setOnClickListener(this)
-        v.cardView_optionThree.setOnClickListener(this)
-        v.cardView_optionFour.setOnClickListener(this)
-        v.button_submit.setOnClickListener(this)
-
-        initailize = fun (){
-            mCurrentPosition  = 1
-            mSelectedOption = 0
-            setQuizz()
-        }
-
-        return v
-    }
-
-    override fun onClick(v: View?) {
-        when(v?.id){
-            R.id.cardView_optionOne -> {
-                selectedOptionView(cardView_optionOne, textView_optionOne,1)
-            }
-            R.id.cardView_optionTwo -> {
-                selectedOptionView(cardView_optionTwo, textView_optionTwo,2)
-            }
-            R.id.cardView_optionThree -> {
-                selectedOptionView(cardView_optionThree, textView_optionThree,3)
-            }
-            R.id.cardView_optionFour -> {
-                selectedOptionView(cardView_optionFour, textView_optionFour,4)
-            }
-            R.id.button_submit -> {
-                if (mSelectedOption != 0){
-                    if(mSelectedOption==itemQuizz!![mCurrentPosition].rep){
-                        scoreNote++
-                    } else if (mSelectedOption!=itemQuizz!![mCurrentPosition].rep) {
-                        wrongAnswerView(mSelectedOption)
-                    }
-                    val correct = itemQuizz!![mCurrentPosition].rep.toString().toInt()
-                    answerView(correct)
-                    nextQuestion()
-                    mSelectedOption = 0
-                }else {
-                    if (mCurrentPosition <= 19){
-                        mCurrentPosition ++
-                        setQuizz()
-                    } else {
-                        popUpActivation()
-                    }
-
-                }
-            }
-        }
-    }
-
-    private fun answerView(answer : Int){
-        when(answer){
-            1 -> {
-                answerOptionView(cardView_optionOne, textView_optionOne)
-            }
-            2 -> {
-                answerOptionView(cardView_optionTwo, textView_optionTwo)
-            }
-            3 -> {
-                answerOptionView(cardView_optionThree, textView_optionThree)
-            }
-            4 -> {
-                answerOptionView(cardView_optionFour, textView_optionFour)
-            }
-        }
-    }
-
-    private fun wrongAnswerView(wronganswer : Int){
-        when(wronganswer){
-            1 -> wrongAnswerOptionView(cardView_optionOne, textView_optionOne)
-            2 -> wrongAnswerOptionView(cardView_optionTwo, textView_optionTwo)
-            3 -> wrongAnswerOptionView(cardView_optionThree, textView_optionThree)
-            4 -> wrongAnswerOptionView(cardView_optionFour, textView_optionFour)
-        }
-    }
-
-    private fun selectedOptionView (cv : CardView, tv : TextView, selectedOptionNum : Int){
-        defaultOptionView()
-        mSelectedOption = selectedOptionNum
-        tv.setTypeface(tv.typeface, Typeface.BOLD)
-        tv.setTextColor(Color.parseColor("#F4F3EE"))
-
-        cv.setCardBackgroundColor(Color.parseColor("#31F4F3EE"))
-        cv.setElevation(1F)
-
-        button_submit.setBackgroundResource(R.drawable.rounded_buttonview)
-        button_submit.text = "Soumettre La Proposition"
-        button_submit.setTextColor(Color.parseColor("#F4F3EE"))
-    }
-
-    private fun answerOptionView (cv : CardView, tv : TextView){
-        tv.setTypeface(tv.typeface, Typeface.BOLD)
-        tv.setTextColor(Color.parseColor("#F4F3EE"))
-        cv.setCardBackgroundColor(Color.parseColor("#5FAD41"))
-        cv.setElevation(8F)
-    }
-
-    private fun wrongAnswerOptionView (cv : CardView, tv : TextView){
-        tv.setTypeface(tv.typeface, Typeface.BOLD)
-        tv.setTextColor(Color.parseColor("#F4F3EE"))
-        cv.setCardBackgroundColor(Color.parseColor("#EE6352"))
-        cv.setElevation(8F)
-    }
-
-    private fun nextQuestion(){
-        button_submit.setBackgroundResource(R.drawable.rounded_buttonview_nextquestion)
-        button_submit.text = "Question Suivante"
-        button_submit.setTextColor(Color.parseColor("#F4F3EE"))
-    }
-
-    private fun popUpActivation(){
-        val v = View.inflate(context,R.layout.popup_congratulation, null)
-        val  builder = AlertDialog.Builder(context)
-        builder.setView(v)
-        var score_obtenu_to_string = "$scoreNote /$mCurrentPosition"
-        v.score_obtenu.text = score_obtenu_to_string
-        val dialog = builder.create()
-        dialog.show()
-        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-        initailize()
-    }
-
-    private fun replaceFragment(fragment : Fragment){
-        if (fragment !=null){
-            val transaction = fragmentManager?.beginTransaction()
-            transaction?.replace(R.id.fragment_container, fragment)
-            transaction?.addToBackStack(null)
-            transaction?.commit()
-        }
-    }
- */
 }
 

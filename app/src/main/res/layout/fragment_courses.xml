@@ -9,7 +9,6 @@
     android:id="@+id/scrollView_course"
     tools:context=".fragments.CoursesFragment">
 
-    <!--Beginin-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout_courses"
         android:layout_width="match_parent"
@@ -26,17 +25,6 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintLeft_toRightOf="parent" />
 
-        <com.google.android.gms.ads.AdView
-            android:id="@+id/adView_fragment_apropos_top"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:adSize="BANNER"
-            app:adUnitId="ca-app-pub-3940256099942544/6300978111"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintLeft_toRightOf="parent" />
-
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView_titre_home"
             android:layout_width="match_parent"
@@ -47,7 +35,7 @@
             android:elevation="@dimen/elevation"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/adView_fragment_apropos_top"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0">
 
 

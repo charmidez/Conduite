@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,16 +15,21 @@ import com.amango.permisdeconduire.R
 import com.amango.permisdeconduire.data.Data
 import com.amango.permisdeconduire.db.DataRepository
 import com.bumptech.glide.Glide
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_examen.*
 import kotlinx.android.synthetic.main.fragment_examen.view.*
 import kotlinx.android.synthetic.main.fragment_examen_quizz.*
 import kotlinx.android.synthetic.main.fragment_examen_quizz.view.*
 import kotlinx.android.synthetic.main.popup_congratulation.view.*
 
-class ExamenQuizzFragment : Fragment(), View.OnClickListener {
+class ExamenQuizzFragment : Fragment() , View.OnClickListener
+{
 
     private var itemQuizz : ArrayList<Data>?  = null
     private var mCurrentPosition :Int = 1
+    private var mLevelProgresseBar : Int = 1
     private var mSelectedOption = 0
     private var scoreNote = 0
     private var setQuizz = fun(){}
@@ -33,8 +39,19 @@ class ExamenQuizzFragment : Fragment(), View.OnClickListener {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var v = inflater.inflate(R.layout.fragment_examen_quizz, container, false)
+
+        val args = this.arguments
+        var idLevel = args?.getInt("niveau")
+
+        val repo = DataRepository()
+
+        MobileAds.initialize(v.context)
+        val adRequest = AdRequest.Builder().build()
+        v.adView_fragment_examen_quizz_bottom.loadAd(adRequest)
+
         itemQuizz = DataRepository.Singleton.itemExam
 
+        repo.updateDataQuizzQuestion {
         //function
         defaultOptionView = fun(){
             val cardView_options = ArrayList<CardView>()
@@ -47,8 +64,9 @@ class ExamenQuizzFragment : Fragment(), View.OnClickListener {
             textView_options.add(2,v.textView_optionThree)
             cardView_options.add(3,v.cardView_optionFour)
             textView_options.add(3,v.textView_optionFour)
+            v.button_submit.isEnabled = false
             v.button_submit.setTextColor(Color.parseColor("#166D8A"))
-            v.button_submit.text = "Choisissez La bonne réponse"
+            v.button_submit.text = getString(R.string.choose_right_answer)
             v.button_submit.setBackgroundColor(Color.parseColor("#00FFFFFF"))
 
             for (option in cardView_options){
@@ -58,10 +76,8 @@ class ExamenQuizzFragment : Fragment(), View.OnClickListener {
             for (option in textView_options){
                 option.setTextColor(Color.parseColor("#166D8A"))
             }
-
         }
 
-        //function
         setQuizz = fun(){
             mSelectedOption = 0
             defaultOptionView()
@@ -73,8 +89,8 @@ class ExamenQuizzFragment : Fragment(), View.OnClickListener {
             val optionThree = itemQuizz!![mCurrentPosition - 1].optionThree
             val optionFour = itemQuizz!![mCurrentPosition - 1].optionFour
 
-            v.progressBar_level_quizz.progress = mCurrentPosition
-            v.textView_progressBar.text = "$mCurrentPosition" + "/" + v.progressBar_level_quizz.max
+            v.progressBar_level_quizz.progress = mLevelProgresseBar
+            v.textView_progressBar.text = "$mLevelProgresseBar" + "/" + v.progressBar_level_quizz.max
             v.textView_question.text = questionQuizz
             Glide.with(v.context)
                 .load(imgQuizzUrl)
@@ -86,6 +102,11 @@ class ExamenQuizzFragment : Fragment(), View.OnClickListener {
             v.textView_optionFour.text = optionFour
         }
         setQuizz()
+
+            if (idLevel != null) {
+                mCurrentPosition = idLevel
+            }
+
         v.cardView_optionOne.setOnClickListener(this)
         v.cardView_optionTwo.setOnClickListener(this)
         v.cardView_optionThree.setOnClickListener(this)
@@ -96,6 +117,7 @@ class ExamenQuizzFragment : Fragment(), View.OnClickListener {
             mCurrentPosition  = 1
             mSelectedOption = 0
             setQuizz()
+        }
         }
         return v
     }
@@ -128,6 +150,7 @@ class ExamenQuizzFragment : Fragment(), View.OnClickListener {
                 }else {
                     if (mCurrentPosition <= 19){
                         mCurrentPosition ++
+                        mLevelProgresseBar++
                         setQuizz()
                     } else {
                         popUpActivation()
@@ -173,6 +196,8 @@ class ExamenQuizzFragment : Fragment(), View.OnClickListener {
         cv.setCardBackgroundColor(Color.parseColor("#31F4F3EE"))
         cv.setElevation(1F)
 
+        button_submit.isEnabled = true
+
         button_submit.setBackgroundResource(R.drawable.rounded_buttonview)
         button_submit.text = "Soumettre La Proposition"
         button_submit.setTextColor(Color.parseColor("#F4F3EE"))
@@ -209,5 +234,6 @@ class ExamenQuizzFragment : Fragment(), View.OnClickListener {
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
         initailize()
     }
+
 
 }

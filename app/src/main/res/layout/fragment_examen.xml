@@ -7,26 +7,15 @@
     android:layout_height="match_parent"
     android:fillViewport="false">
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView_fragment_examen_top"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:adSize="BANNER"
-        app:adUnitId="ca-app-pub-3940256099942544/6300978111"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintLeft_toRightOf="parent" />
-
     <GridView
         android:id="@+id/gridView_layout_id"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:numColumns="auto_fit"
+        android:numColumns="3"
         app:layout_constraintBottom_toTopOf="@+id/adView_fragment_examen_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/adView_fragment_examen_top"/>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView_fragment_examen_bottom"

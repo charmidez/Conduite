@@ -9,6 +9,9 @@
         <item name="android:fontFamily">@font/source_sans_pro_regular</item>
     </style>
 
+    <!--style name="progress_bar">
+        <item name="colorPrimary">@color/bluesecond_cobaltturquoise</item>
+    </style-->
 
     <!-- my Theme whithout appbar-->
     <style name="Theme.PermisDeConduire.Splashscreen" parent="Theme.AppCompat.Light.NoActionBar">

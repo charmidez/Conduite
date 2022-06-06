@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".fragments.PanneauFragment" >
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView_fragment_panneau_top"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:adSize="BANNER"
-        app:adUnitId="ca-app-pub-3940256099942544/6300978111"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintLeft_toRightOf="parent"/>
-
     <ListView
         android:id="@+id/listView_panneau"
         android:layout_width="match_parent"
@@ -26,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/adView_fragment_panneau_top"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
     <com.google.android.gms.ads.AdView

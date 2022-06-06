@@ -13,6 +13,9 @@ import com.amango.permisdeconduire.db.DataRepository.Singleton.itemListPanneauDi
 import com.amango.permisdeconduire.db.DataRepository.Singleton.itemListPanneauIndication
 import com.amango.permisdeconduire.db.DataRepository.Singleton.itemListPanneauInterdit
 import com.amango.permisdeconduire.db.DataRepository.Singleton.itemListPanneauObligation
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_panneau_details.view.*
 
 class PanneauDetailsFragment : Fragment() {
@@ -21,10 +24,14 @@ class PanneauDetailsFragment : Fragment() {
         val v = inflater.inflate(R.layout.fragment_panneau_details, container, false)
         val repo = DataRepository()
 
+        MobileAds.initialize(v.context)
+        val adRequest = AdRequest.Builder().build()
+        v.adView_fragment_panneau_details_bottom.loadAd(adRequest)
+        v.adView_fragment_panneau_details_top.loadAd(adRequest)
+
         val args = this.arguments
         var idTypePanneaux = args?.getInt("id")
         v.textView_titre_categorie_panneau.text  = args?.get("titre").toString()
-        v.textView_desc_type_panneau.text = args?.get("desc").toString()
 
         var adapter_list : MyAdapter
         when(idTypePanneaux){

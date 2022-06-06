@@ -1,7 +1,7 @@
 <resources>
     <!-- Menu -->
     <string name="courses">Cours</string>
-    <string name="panneaux">Panneaux Routiers</string>
+    <string name="panneaux">Panneaux</string>
     <string name="exam">Examen</string>
     <string name="settings">Réglages</string>
 
@@ -13,6 +13,8 @@
     <string name="change_language_english">Switch to english</string>
     <string name="apropos">A Propos</string>
     <string name="qui_sommes_nous">Qui sommes-nous</string>
+
+    <string name="choose_right_answer">Choisissez La bonne réponse</string>
 
     <string name="qui_sommes_nous_texte">
         Je possède plusieurs années d’expérience dans le developpement informatique, notamment dans le developpement mobile et web. En effet, j’ai acquis une bonne expérience à l’entrée de données et je possède une aisance remarquable avec les dernières versions des technologies android et node. Je suis une personne polyvalente avec une grande capacité d’adaptation. Capable de travailler sous pression et de respecter des délais serrés, je suis convaincu que je pourrais m’adapter rapidement à votre environnement de travail, dans la mésure où nous devrons signer un contrat de travail. Conscient de la diversité de votre clientèle, je vous fais savoir que je maîtrise d\'autres aspect du developpement informatique , ce qui me rend capable de developper des solutions informatiques pointues.

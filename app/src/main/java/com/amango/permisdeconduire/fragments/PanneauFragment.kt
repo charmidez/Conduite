@@ -9,12 +9,21 @@ import com.amango.permisdeconduire.R
 import com.amango.permisdeconduire.adapter.MyAdapter
 import com.amango.permisdeconduire.db.DataRepository.Singleton.itemListPanneauType
 import com.amango.permisdeconduire.fragments.subfragment.PanneauDetailsFragment
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_panneau.*
 import kotlinx.android.synthetic.main.fragment_panneau.view.*
 
 class PanneauFragment : Fragment() {
     private val detailspanneauFragment = PanneauDetailsFragment()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v : View = inflater.inflate(R.layout.fragment_panneau, container, false)
+
+        MobileAds.initialize(v.context)
+        val adRequest = AdRequest.Builder().build()
+        //v.adView_fragment_panneau_top.loadAd(adRequest)
+        v.adView_fragment_panneau_bottom.loadAd(adRequest)
 
         //Part 2
         val adapter_list : MyAdapter

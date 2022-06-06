@@ -12,6 +12,9 @@ import com.amango.permisdeconduire.db.DataRepository
 import com.amango.permisdeconduire.db.DataRepository.Singleton.itemExam
 import com.amango.permisdeconduire.db.DataRepository.Singleton.itemListCourses
 import com.amango.permisdeconduire.fragments.subfragment.CoursesDetailsFragment
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_courses.view.*
 
 class CoursesFragment : Fragment() {
@@ -19,6 +22,10 @@ class CoursesFragment : Fragment() {
     private val coursesDetailsFragment = CoursesDetailsFragment()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_courses, container, false)
+
+        MobileAds.initialize(v.context)
+        val adRequest = AdRequest.Builder().build()
+        //v.adView.loadAd(adRequest)
 
         //Part 2
         val adapter_list : MyAdapter

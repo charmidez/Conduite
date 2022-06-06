@@ -6,14 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.amango.permisdeconduire.db.DataRepository
 import com.amango.permisdeconduire.fragments.*
-import com.google.android.gms.ads.AdListener
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    //private val coursesFragment = CoursesFragment()
+    private val coursesFragment = CoursesFragment()
     private val panneauFragment = PanneauFragment()
     private val examenFragment = ExamenFragment()
     private val settingFragment = SettingFragment()
@@ -24,17 +21,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        MobileAds.initialize(this@MainActivity)
-        val adRequest = AdRequest.Builder().build()
-        adView.loadAd(adRequest)
-        adView.adListener = object : AdListener() {
-        }
         repo.updateDataPanneau {
             textView_chargement.visibility = View.INVISIBLE
             replaceFragment(panneauFragment, getString(R.string.panneaux))
         }
             bottom_navigation.setOnNavigationItemSelectedListener {
                 when(it.itemId){
+                    R.id.item_course -> {
+                        repo.updateDataCours {
+                            replaceFragment(coursesFragment, getString(R.string.courses))
+                        }
+                    }
                     R.id.item_panneau -> {
                         repo.updateDataPanneau {
                             textView_chargement.visibility = View.INVISIBLE
@@ -59,6 +56,7 @@ class MainActivity : AppCompatActivity() {
                 val transaction = supportFragmentManager.beginTransaction()
                 transaction.replace(R.id.fragment_container, fragment)
                 textView_title_fragment.setText(title_fragment)
+                transaction?.addToBackStack(parentActivityIntent.toString())
                 transaction.commit()
             }
     }

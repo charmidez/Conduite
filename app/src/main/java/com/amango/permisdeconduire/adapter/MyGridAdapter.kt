@@ -4,6 +4,8 @@ import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.amango.permisdeconduire.R
 import com.amango.permisdeconduire.data.DataGridChar
 import kotlinx.android.synthetic.main.item_grid.view.*
