@@ -24,10 +24,10 @@ class CoursesFragment : Fragment() {
         val v = inflater.inflate(R.layout.fragment_courses, container, false)
 
         MobileAds.initialize(v.context)
-        val adRequest = AdRequest.Builder().build()
+        //val adRequest = AdRequest.Builder().build()
         //v.adView.loadAd(adRequest)
 
-        //Part 2
+        //Part 2 test
         val adapter_list : MyAdapter
 
         //Part 3
