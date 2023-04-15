@@ -2,7 +2,7 @@ package com.amango.permisdeconduire.data
 
 class Data (
     var id : Int? = 0,
-    var title : String? = "", //title is question in exam
+    var title : String? = "",
     var desc : String? ="",
     var imgUrl : String? = "",
     var optionOne : String? = "",

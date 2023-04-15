@@ -13,19 +13,17 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import com.amango.permisdeconduire.R
 import com.amango.permisdeconduire.data.Data
+import com.amango.permisdeconduire.databinding.FragmentExamenQuizzBinding
+import com.amango.permisdeconduire.databinding.PopupCongratulationBinding
 import com.amango.permisdeconduire.db.DataRepository
 import com.bumptech.glide.Glide
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_examen.*
-import kotlinx.android.synthetic.main.fragment_examen.view.*
-import kotlinx.android.synthetic.main.fragment_examen_quizz.*
-import kotlinx.android.synthetic.main.fragment_examen_quizz.view.*
-import kotlinx.android.synthetic.main.popup_congratulation.view.*
 
-class ExamenQuizzFragment : Fragment() , View.OnClickListener
-{
+class ExamenQuizzFragment : Fragment() , View.OnClickListener {
+
+    private var _binding : FragmentExamenQuizzBinding? = null
+    private val binding get() = _binding!!
 
     private var itemQuizz : ArrayList<Data>?  = null
     private var mCurrentPosition :Int = 1
@@ -37,17 +35,42 @@ class ExamenQuizzFragment : Fragment() , View.OnClickListener
     private var initailize = fun(){
     }
 
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var v = inflater.inflate(R.layout.fragment_examen_quizz, container, false)
+        _binding = FragmentExamenQuizzBinding.inflate(inflater,container,false)
+        val root : View = binding.root
+
+         var cardViewOne = binding.cardViewOptionOne
+        var cardViewTwo = binding.cardViewOptionTwo
+        var cardViewThree = binding.cardViewOptionThree
+        var cardViewFour = binding.cardViewOptionFour
+
+        var txtViewOne = binding.textViewOptionOne
+        var txtViewTwo = binding.textViewOptionTwo
+        var txtViewThree = binding.textViewOptionThree
+        var txtViewFour = binding.textViewOptionFour
+
+        var btnSubmit = binding.buttonSubmit
+
+        var progressBar_levelQuizz = binding.progressBarLevelQuizz
+        var txtView_progress_bar = binding.textViewProgressBar
+
+        var txtView_question = binding.textViewQuestion
+        var imgView_question = binding.imageViewQuestion
+
+
+
+        //var v = inflater.inflate(R.layout.fragment_examen_quizz, container, false)
 
         val args = this.arguments
         var idLevel = args?.getInt("niveau")
 
         val repo = DataRepository()
 
-        MobileAds.initialize(v.context)
+        MobileAds.initialize(root.context)
         val adRequest = AdRequest.Builder().build()
-        v.adView_fragment_examen_quizz_bottom.loadAd(adRequest)
+        //v.adView_fragment_examen_quizz_bottom.loadAd(adRequest)
+        binding.adViewFragmentExamenQuizzBottom.loadAd(adRequest)
 
         itemQuizz = DataRepository.Singleton.itemExam
 
@@ -56,18 +79,22 @@ class ExamenQuizzFragment : Fragment() , View.OnClickListener
         defaultOptionView = fun(){
             val cardView_options = ArrayList<CardView>()
             val textView_options = ArrayList<TextView>()
-            cardView_options.add(0,v.cardView_optionOne)
-            textView_options.add(0,v.textView_optionOne)
-            cardView_options.add(1,v.cardView_optionTwo)
-            textView_options.add(1,v.textView_optionTwo)
-            cardView_options.add(2,v.cardView_optionThree)
-            textView_options.add(2,v.textView_optionThree)
-            cardView_options.add(3,v.cardView_optionFour)
-            textView_options.add(3,v.textView_optionFour)
-            v.button_submit.isEnabled = false
-            v.button_submit.setTextColor(Color.parseColor("#166D8A"))
-            v.button_submit.text = getString(R.string.choose_right_answer)
-            v.button_submit.setBackgroundColor(Color.parseColor("#00FFFFFF"))
+            cardView_options.add(0,cardViewOne)
+            textView_options.add(0,txtViewOne)
+            cardView_options.add(1,cardViewTwo)
+            textView_options.add(1,txtViewTwo)
+            cardView_options.add(2,cardViewThree)
+            textView_options.add(2,txtViewThree)
+            cardView_options.add(3,cardViewFour)
+            textView_options.add(3,txtViewFour)
+            //v.button_submit.isEnabled = false
+            btnSubmit.isEnabled  = false
+            //v.button_submit.setTextColor(Color.parseColor("#166D8A"))
+            btnSubmit.setTextColor(Color.parseColor("#166D8A"))
+            //v.button_submit.text = getString(R.string.choose_right_answer)
+            btnSubmit.text = getString(R.string.choose_right_answer)
+            //v.button_submit.setBackgroundColor(Color.parseColor("#00FFFFFF"))
+            btnSubmit.setBackgroundColor(Color.parseColor("#00FFFFFF"))
 
             for (option in cardView_options){
                 option.setCardBackgroundColor(Color.parseColor("#F4F3EE"))
@@ -89,17 +116,20 @@ class ExamenQuizzFragment : Fragment() , View.OnClickListener
             val optionThree = itemQuizz!![mCurrentPosition - 1].optionThree
             val optionFour = itemQuizz!![mCurrentPosition - 1].optionFour
 
-            v.progressBar_level_quizz.progress = mLevelProgresseBar
-            v.textView_progressBar.text = "$mLevelProgresseBar" + "/" + v.progressBar_level_quizz.max
-            v.textView_question.text = questionQuizz
-            Glide.with(v.context)
+            //v.progressBar_level_quizz.progress = mLevelProgresseBar
+            progressBar_levelQuizz.progress = mLevelProgresseBar
+            //v.textView_progressBar.text = "$mLevelProgresseBar" + "/" + v.progressBar_level_quizz.max
+            txtView_progress_bar.text = "$mLevelProgresseBar" + "/" +progressBar_levelQuizz.max
+            //v.textView_question.text = questionQuizz
+            txtView_question.text = questionQuizz
+            Glide.with(root.context)
                 .load(imgQuizzUrl)
                 .centerCrop()
-                .into(v.imageView_question)
-            v.textView_optionOne.text = optionOne
-            v.textView_optionTwo.text = optionTwo
-            v.textView_optionThree.text = optionThree
-            v.textView_optionFour.text = optionFour
+                .into(imgView_question)
+            txtViewOne.text = optionOne
+            txtViewTwo.text = optionTwo
+            txtViewThree.text = optionThree
+            txtViewFour.text = optionFour
         }
         setQuizz()
 
@@ -107,11 +137,11 @@ class ExamenQuizzFragment : Fragment() , View.OnClickListener
                 mCurrentPosition = idLevel
             }
 
-        v.cardView_optionOne.setOnClickListener(this)
-        v.cardView_optionTwo.setOnClickListener(this)
-        v.cardView_optionThree.setOnClickListener(this)
-        v.cardView_optionFour.setOnClickListener(this)
-        v.button_submit.setOnClickListener(this)
+            cardViewOne.setOnClickListener(this)
+            cardViewTwo.setOnClickListener(this)
+            cardViewThree.setOnClickListener(this)
+            cardViewFour.setOnClickListener(this)
+            btnSubmit.setOnClickListener(this)
 
         initailize = fun (){
             mCurrentPosition  = 1
@@ -119,22 +149,22 @@ class ExamenQuizzFragment : Fragment() , View.OnClickListener
             setQuizz()
         }
         }
-        return v
+        return root
     }
 
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.cardView_optionOne -> {
-                selectedOptionView(cardView_optionOne, textView_optionOne,1)
+                selectedOptionView(binding.cardViewOptionOne, binding.textViewOptionOne,1)
             }
             R.id.cardView_optionTwo -> {
-                selectedOptionView(cardView_optionTwo, textView_optionTwo,2)
+                selectedOptionView(binding.cardViewOptionTwo, binding.textViewOptionTwo,2)
             }
             R.id.cardView_optionThree -> {
-                selectedOptionView(cardView_optionThree, textView_optionThree,3)
+                selectedOptionView(binding.cardViewOptionThree, binding.textViewOptionThree,3)
             }
             R.id.cardView_optionFour -> {
-                selectedOptionView(cardView_optionFour, textView_optionFour,4)
+                selectedOptionView(binding.cardViewOptionFour, binding.textViewOptionFour,4)
             }
             R.id.button_submit -> {
                 if (mSelectedOption != 0){
@@ -153,7 +183,7 @@ class ExamenQuizzFragment : Fragment() , View.OnClickListener
                         mLevelProgresseBar++
                         setQuizz()
                     } else {
-                        popUpActivation()
+                        //popUpActivation()
                     }
 
                 }
@@ -164,26 +194,26 @@ class ExamenQuizzFragment : Fragment() , View.OnClickListener
     private fun answerView(answer : Int){
         when(answer){
             1 -> {
-                answerOptionView(cardView_optionOne, textView_optionOne)
+                answerOptionView(binding.cardViewOptionOne, binding.textViewOptionOne)
             }
             2 -> {
-                answerOptionView(cardView_optionTwo, textView_optionTwo)
+                answerOptionView(binding.cardViewOptionTwo, binding.textViewOptionTwo)
             }
             3 -> {
-                answerOptionView(cardView_optionThree, textView_optionThree)
+                answerOptionView(binding.cardViewOptionThree, binding.textViewOptionThree)
             }
             4 -> {
-                answerOptionView(cardView_optionFour, textView_optionFour)
+                answerOptionView(binding.cardViewOptionFour, binding.textViewOptionFour)
             }
         }
     }
 
     private fun wrongAnswerView(wronganswer : Int){
         when(wronganswer){
-            1 -> wrongAnswerOptionView(cardView_optionOne, textView_optionOne)
-            2 -> wrongAnswerOptionView(cardView_optionTwo, textView_optionTwo)
-            3 -> wrongAnswerOptionView(cardView_optionThree, textView_optionThree)
-            4 -> wrongAnswerOptionView(cardView_optionFour, textView_optionFour)
+            1 -> wrongAnswerOptionView(binding.cardViewOptionOne, binding.textViewOptionOne)
+            2 -> wrongAnswerOptionView(binding.cardViewOptionTwo, binding.textViewOptionTwo)
+            3 -> wrongAnswerOptionView(binding.cardViewOptionThree, binding.textViewOptionThree)
+            4 -> wrongAnswerOptionView(binding.cardViewOptionFour, binding.textViewOptionFour)
         }
     }
 
@@ -196,11 +226,11 @@ class ExamenQuizzFragment : Fragment() , View.OnClickListener
         cv.setCardBackgroundColor(Color.parseColor("#31F4F3EE"))
         cv.setElevation(1F)
 
-        button_submit.isEnabled = true
+        binding.buttonSubmit.isEnabled = true
 
-        button_submit.setBackgroundResource(R.drawable.rounded_buttonview)
-        button_submit.text = "Soumettre La Proposition"
-        button_submit.setTextColor(Color.parseColor("#F4F3EE"))
+        binding.buttonSubmit.setBackgroundResource(R.drawable.rounded_buttonview)
+        binding.buttonSubmit.text = "Soumettre La Proposition"
+        binding.buttonSubmit.setTextColor(Color.parseColor("#F4F3EE"))
     }
 
     private fun answerOptionView (cv : CardView, tv : TextView){
@@ -218,22 +248,26 @@ class ExamenQuizzFragment : Fragment() , View.OnClickListener
     }
 
     private fun nextQuestion(){
-        button_submit.setBackgroundResource(R.drawable.rounded_buttonview_nextquestion)
-        button_submit.text = "Question Suivante"
-        button_submit.setTextColor(Color.parseColor("#F4F3EE"))
+        binding.buttonSubmit.setBackgroundResource(R.drawable.rounded_buttonview_nextquestion)
+        binding.buttonSubmit.text = "Question Suivante"
+        binding.buttonSubmit.setTextColor(Color.parseColor("#F4F3EE"))
     }
 
+    /*
     private fun popUpActivation(){
-        val v = View.inflate(context,R.layout.popup_congratulation, null)
+        //val v = View.inflate(context,R.layout.popup_congratulation, null)
+        var _binding : PopupCongratulationBinding? = null
+
         val  builder = AlertDialog.Builder(context)
-        builder.setView(v)
-        var score_obtenu_to_string = "$scoreNote /${progressBar_level_quizz.max}"
-        v.score_obtenu.text = score_obtenu_to_string
+        builder.setView(_binding!!.root)
+        var score_obtenu_to_string = "$scoreNote /${progressBar_levelQuizz.max}"
+        binding.scoreObtenu.text = score_obtenu_to_string
         val dialog = builder.create()
         dialog.show()
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
         initailize()
     }
+    */
 
 
 }

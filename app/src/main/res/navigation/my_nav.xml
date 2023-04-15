@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
-    app:startDestination="@id/coursesFragment">
+    app:startDestination="@+id/navigation_course_fragment">
 
-    <fragment
+    <!--fragment
         android:id="@+id/coursesFragment"
         android:name="com.amango.permisdeconduire.fragments.CoursesFragment"
         android:label="fragment_courses"
@@ -63,5 +63,44 @@
         android:id="@+id/examenFragment"
         android:name="com.amango.permisdeconduire.fragments.ExamenFragment"
         android:label="fragment_examen"
-        tools:layout="@layout/fragment_examen" />
+        tools:layout="@layout/fragment_examen" /-->
+
+    <!--
+    android:id="@+id/navigation_suivietc"
+        android:name="com.charmidezassiobo.tcrec.ui.suivietc.SuivietcFragment"
+        android:label="@string/menu_list"
+        android:fontFamily="@font/source_sans_pro_bold"
+        tools:layout="@layout/fragment_suivietc"
+
+    -->
+    <fragment
+        android:id="@+id/navigation_course_fragment"
+        android:name="com.amango.permisdeconduire.fragments.CoursesFragment"
+        android:label="@string/courses"
+        android:fontFamily="@font/source_sans_pro_bold"
+        tools:layout="@layout/fragment_courses"
+        />
+
+    <fragment
+        android:id="@+id/navigation_panneaux_fragment"
+        android:name="com.amango.permisdeconduire.fragments.PanneauFragment"
+        android:label="@string/panneaux"
+        android:fontFamily="@font/source_sans_pro_bold"
+        tools:layout="@layout/fragment_panneau"
+        />
+
+    <fragment
+        android:id="@+id/navigation_examen_fragment"
+        android:name="com.amango.permisdeconduire.fragments.ExamenFragment"
+         android:label="@string/exam"
+        tools:layout="@layout/fragment_examen"
+        />
+
+    <fragment
+        android:id="@+id/navigation_setting_fragment"
+        android:name="com.amango.permisdeconduire.fragments.SettingFragment"
+        android:label="@string/settings"
+        tools:layout="@layout/fragment_setting"
+        />
+
 </navigation>

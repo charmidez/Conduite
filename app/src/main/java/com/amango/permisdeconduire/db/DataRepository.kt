@@ -193,7 +193,6 @@ class DataRepository {
             }
         })
     }
-
     fun updateDataPanneauDanger(callback: () -> Unit){
         dbPanneauDangerList.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
