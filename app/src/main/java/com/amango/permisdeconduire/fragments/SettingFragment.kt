@@ -6,30 +6,32 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.amango.permisdeconduire.R
+import com.amango.permisdeconduire.databinding.FragmentSettingBinding
 import com.amango.permisdeconduire.fragments.subfragment.AproposFragment
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.view.*
-import kotlinx.android.synthetic.main.fragment_setting.view.*
 
 class SettingFragment : Fragment() {
 
+    private var _binding : FragmentSettingBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val v: View = inflater!!.inflate(R.layout.fragment_setting, container, false)
+        _binding = FragmentSettingBinding.inflate(inflater,container,false)
+        val root : View = binding.root
 
-        MobileAds.initialize(v.context)
+        MobileAds.initialize(context)
         val adRequest = AdRequest.Builder().build()
-        v.adView_fragment_setting_bottom.loadAd(adRequest)
-        v.adView_fragment_setting_top.loadAd(adRequest)
+        binding.adViewFragmentSettingBottom.loadAd(adRequest)
+        binding.adViewFragmentSettingTop.loadAd(adRequest)
 
-        v.textView_nous.setOnClickListener { view ->
+        binding.textViewNous.setOnClickListener{
             replaceFragment(aproposFragment)
         }
-        v.textView4.setOnClickListener {
+        binding.textView4.setOnClickListener {
             replaceFragment(aproposFragment)
         }
-        return v
+        return root
     }
 
     private val aproposFragment = AproposFragment()

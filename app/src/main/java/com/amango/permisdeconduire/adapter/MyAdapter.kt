@@ -11,9 +11,7 @@ import android.widget.TextView
 import com.amango.permisdeconduire.R
 import com.amango.permisdeconduire.data.Data
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.item_courses.view.*
-import kotlinx.android.synthetic.main.item_panneau.view.*
-import kotlinx.android.synthetic.main.item_panneau_type.view.*
+
 
 class MyAdapter(
     var mContext : Context,
@@ -21,17 +19,26 @@ class MyAdapter(
     var values : ArrayList<Data>
 )  : ArrayAdapter<Data>(mContext,ressource,values) {
 
+    private var _binding = ressource
+    private val binding get() = _binding!!
+
+    //var imageView_type_panneau : ImageView =
+
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val data = values[position]
+
         val iView = LayoutInflater.from(mContext).inflate(ressource, parent, false)
+        //_binding = getView()
 
         var title : TextView
         var img  : ImageView
         var desc : TextView
 
+
         var item_xml = ressource
 
         //getElement from itemView func
+        /*
         when(item_xml){
             R.layout.item_panneau_type -> {
                 img = iView.imageView_type_panneau
@@ -64,6 +71,8 @@ class MyAdapter(
                     .into(img)
             }
         }
+
+         */
         return iView
     }
 

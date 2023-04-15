@@ -7,31 +7,54 @@ import android.view.View
 import android.view.ViewGroup
 import com.amango.permisdeconduire.R
 import com.amango.permisdeconduire.adapter.MyAdapter
+import com.amango.permisdeconduire.databinding.FragmentPanneauBinding
 import com.amango.permisdeconduire.db.DataRepository.Singleton.itemListPanneauType
 import com.amango.permisdeconduire.fragments.subfragment.PanneauDetailsFragment
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_panneau.*
-import kotlinx.android.synthetic.main.fragment_panneau.view.*
 
 class PanneauFragment : Fragment() {
+    /*
+* private var _binding: FragmentSuivietcBinding? = null
+private val binding get() = _binding!!
+*
+* _binding = FragmentSuivietcBinding.inflate(inflater, container, false)
+    val root: View = binding.root
+* */
+    private var _binding : FragmentPanneauBinding? = null
+    private val binding get() = _binding!!
+
     private val detailspanneauFragment = PanneauDetailsFragment()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val v : View = inflater.inflate(R.layout.fragment_panneau, container, false)
+        _binding = FragmentPanneauBinding.inflate(inflater,container,false)
+        val root : View = binding.root
+        //val v : View = inflater.inflate(R.layout.fragment_panneau, container, false)
 
-        MobileAds.initialize(v.context)
+        MobileAds.initialize(root.context)
         val adRequest = AdRequest.Builder().build()
         //v.adView_fragment_panneau_top.loadAd(adRequest)
-        v.adView_fragment_panneau_bottom.loadAd(adRequest)
+        //v.adView_fragment_panneau_bottom.loadAd(adRequest)
+        binding.adViewFragmentPanneauBottom.loadAd(adRequest)
 
         //Part 2
         val adapter_list : MyAdapter
 
         //Part 3
-        adapter_list = MyAdapter(v.context, R.layout.item_panneau_type,itemListPanneauType)
-        v.listView_panneau.adapter = adapter_list
+        adapter_list = MyAdapter(root.context, R.layout.item_panneau_type, itemListPanneauType)
+        binding.listViewPanneau.adapter = adapter_list
+        //v.listView_panneau.adapter = adapter_list
 
+        binding.listViewPanneau.setOnItemClickListener {
+                adpterView, view, position, id ->
+            val bundles = Bundle()
+            val clickedPost = itemListPanneauType [position]
+            bundles.putString("titre", clickedPost.title)
+            bundles.putString("desc",clickedPost.desc)
+            clickedPost.id?.let { bundles.putInt("id", it) }
+            detailspanneauFragment.arguments = bundles
+            replaceFragment(detailspanneauFragment)
+        }
+        /*
         v.listView_panneau.setOnItemClickListener {adpterView, view, position, id ->
             val bundles = Bundle()
             val clickedPost = itemListPanneauType [position]
@@ -41,7 +64,9 @@ class PanneauFragment : Fragment() {
             detailspanneauFragment.arguments = bundles
             replaceFragment(detailspanneauFragment)
         }
-        return v
+
+         */
+        return root
     }
 
     private fun replaceFragment(fragment : Fragment){

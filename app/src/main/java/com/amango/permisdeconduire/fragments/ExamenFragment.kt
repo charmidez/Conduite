@@ -7,12 +7,15 @@ import android.view.ViewGroup
 import com.amango.permisdeconduire.R
 import com.amango.permisdeconduire.adapter.MyGridAdapter
 import com.amango.permisdeconduire.data.DataGridChar
+import com.amango.permisdeconduire.databinding.FragmentExamenBinding
 import com.amango.permisdeconduire.fragments.subfragment.ExamenQuizzFragment
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
-import kotlinx.android.synthetic.main.fragment_examen.view.*
 
 class ExamenFragment : Fragment() {
+
+    private var _binding : FragmentExamenBinding? = null
+    private val binding get() = _binding!!
 
     private var examenQuizzFragment = ExamenQuizzFragment()
 
@@ -49,31 +52,29 @@ class ExamenFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?  {
-        var v = inflater.inflate(R.layout.fragment_examen, container, false)
+        _binding = FragmentExamenBinding.inflate(inflater,container,false)
+        val root : View = binding.root
+        //var v = inflater.inflate(R.layout.fragment_examen, container, false)
 
-        MobileAds.initialize(v.context)
+        MobileAds.initialize(root.context)
         val adRequest = AdRequest.Builder().build()
-        v.adView_fragment_examen_bottom.loadAd(adRequest)
+        //v.adView_fragment_examen_bottom.loadAd(adRequest)
+        binding.adViewFragmentExamenBottom.loadAd(adRequest)
 
         var myGridAdapter : MyGridAdapter
 
         var charValues : ArrayList<DataGridChar>
 
         charValues = setDataChar()
-        myGridAdapter = MyGridAdapter(v.context,charValues!!)
-        v.gridView_layout_id.adapter = myGridAdapter
-
-        v.gridView_layout_id.setOnItemClickListener { parent, view, position, id ->
+        myGridAdapter = MyGridAdapter(root.context,charValues!!)
+        binding.gridViewLayoutId.adapter = myGridAdapter
+        binding.gridViewLayoutId.setOnItemClickListener { parent, view, position, id ->
             val bundles = Bundle()
             val clickedId = charValues[position]
-            clickedId.niveau.let { bundles.putInt("niveau", it!!)
-
-            }
-            examenQuizzFragment.arguments = bundles
-
+            clickedId.niveau.let { bundles.putInt("niveau", it!!) }
             replaceFragment(examenQuizzFragment)
         }
-        return v
+        return root
     }
 
     private fun replaceFragment(fragment : Fragment){

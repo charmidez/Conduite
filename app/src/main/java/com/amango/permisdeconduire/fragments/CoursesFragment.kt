@@ -8,22 +8,27 @@ import android.view.View
 import android.view.ViewGroup
 import com.amango.permisdeconduire.R
 import com.amango.permisdeconduire.adapter.MyAdapter
+import com.amango.permisdeconduire.databinding.FragmentCoursesBinding
 import com.amango.permisdeconduire.db.DataRepository
 import com.amango.permisdeconduire.db.DataRepository.Singleton.itemExam
 import com.amango.permisdeconduire.db.DataRepository.Singleton.itemListCourses
 import com.amango.permisdeconduire.fragments.subfragment.CoursesDetailsFragment
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_courses.view.*
+
 
 class CoursesFragment : Fragment() {
 
+    private var _binding : FragmentCoursesBinding? = null
+    private val binding get() = _binding!!
+
     private val coursesDetailsFragment = CoursesDetailsFragment()
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val v = inflater.inflate(R.layout.fragment_courses, container, false)
+        _binding = FragmentCoursesBinding.inflate(inflater,container,false)
+        val root : View = binding.root
+        //val v = inflater.inflate(R.layout.fragment_courses, container, false)
 
-        MobileAds.initialize(v.context)
+        MobileAds.initialize(root.context)
         //val adRequest = AdRequest.Builder().build()
         //v.adView.loadAd(adRequest)
 
@@ -31,9 +36,20 @@ class CoursesFragment : Fragment() {
         val adapter_list : MyAdapter
 
         //Part 3
-        adapter_list = MyAdapter(v.context, R.layout.item_courses, itemListCourses )
-        v.listView_courses.adapter = adapter_list
+        adapter_list = MyAdapter(root.context, R.layout.item_courses, itemListCourses )
+        //v.listView_courses.adapter = adapter_list
+        binding.listViewCourses.adapter = adapter_list
 
+        binding.listViewCourses.setOnItemClickListener { adpterView, view, position, id ->
+            val bundles = Bundle()
+            val clickedPost = itemListCourses [position]
+            bundles.putString("titre", clickedPost.title)
+            bundles.putString("desc",clickedPost.desc)
+            bundles.putString("imgUrl",clickedPost.imgUrl)
+            coursesDetailsFragment.arguments = bundles
+            replaceFragment(coursesDetailsFragment)
+        }
+        /*
         v.listView_courses.setOnItemClickListener{adpterView, view, position, id ->
             val bundles = Bundle()
             val clickedPost = itemListCourses [position]
@@ -43,7 +59,8 @@ class CoursesFragment : Fragment() {
             coursesDetailsFragment.arguments = bundles
             replaceFragment(coursesDetailsFragment)
         }
-        return v
+        */
+        return root
     }
 
     private fun replaceFragment(fragment : Fragment){

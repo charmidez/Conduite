@@ -5,28 +5,30 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
-import com.amango.permisdeconduire.R
-import com.amango.permisdeconduire.fragments.SettingFragment
-import com.bumptech.glide.Glide
+import com.amango.permisdeconduire.databinding.FragmentAproposBinding
+
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_apropos.*
-import kotlinx.android.synthetic.main.fragment_apropos.view.*
-import javax.security.auth.callback.Callback
+
 
 class AproposFragment : Fragment() {
 
+    private var _binding : FragmentAproposBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val v = inflater.inflate(R.layout.fragment_apropos, container, false)
+        _binding = FragmentAproposBinding.inflate(inflater,container,false)
+        val root : View = binding.root
+        //val v = inflater.inflate(R.layout.fragment_apropos, container, false)
 
-        MobileAds.initialize(v.context)
+        MobileAds.initialize(root.context)
         val adRequest = AdRequest.Builder().build()
-        v.adView_fragment_apropos_bottom.loadAd(adRequest)
-        v.adView_fragment_apropos_top.loadAd(adRequest)
+        //v.adView_fragment_apropos_bottom.loadAd(adRequest)
+        binding.adViewFragmentAproposBottom.loadAd(adRequest)
+        binding.adViewFragmentAproposTop.loadAd(adRequest)
+        //v.adView_fragment_apropos_top.loadAd(adRequest)
 
-        return v
+        return root
     }
 }
 
