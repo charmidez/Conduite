@@ -4,8 +4,10 @@
     <dimen name="bold_text_size">14sp</dimen>
     <dimen name="title_size">16dp</dimen>
     <dimen name="text_gbalo">12dp</dimen>
+
     <dimen name="corner_raduis">10dp</dimen>
     <dimen name="corner_raduis_courses">8dp</dimen>
+
     <dimen name="elevation">4dp</dimen>
     <dimen name="text_size">10dp</dimen>
     <dimen name="appBar">32dp</dimen>
@@ -13,11 +15,13 @@
 
     <dimen name="all_padding">14dp</dimen>
     <dimen name="padd">8dp</dimen>
+    <dimen name="padd_mid">8dp</dimen>
 
     <dimen name="all_margin">14dp</dimen>
     <dimen name="margin">8dp</dimen>
 
-    <dimen name="radius">10dp</dimen>
+    <dimen name="radius">4dp</dimen>
+
     <dimen name="text_margin">16dp</dimen>
 
     <dimen name="question_text_size">20dp</dimen>

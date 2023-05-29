@@ -21,7 +21,7 @@
     <style name="textGridview">
         <item name="android:fontFamily">@font/source_sans_pro_bold</item>
         <item name="android:textSize">24dp</item>
-        <item name="android:textColor">@color/grey_loading</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <!--image_design-->
@@ -32,11 +32,34 @@
 
     <style name="progressBar_style">
 
-
     </style>
 
     <style name="progress_bar">
+        <item name="colorAccent">@color/white</item>
+    </style>
+
+    <style name="progress_bar_profil">
         <item name="colorAccent">@color/bluesecond_cobaltturquoise</item>
     </style>
+
+    <style name="textTitleProgress">
+        <item name="android:fontFamily">@font/source_sans_pro_bold</item>
+        <item name="android:textSize">10dp</item>
+        <item name="android:textColor">@color/white_alabaster</item>
+    </style>
+
+    <style name="textQuestion">
+        <item name="android:fontFamily">@font/source_sans_pro_bold</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/white_alabaster</item>
+    </style>
+
+
+    <style name="titleFragment">
+        <item name="android:textColor">@color/white_alabaster</item>
+        <item name="android:fontFamily">@font/source_sans_pro_bold</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+
 
 </resources>

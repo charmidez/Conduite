@@ -79,7 +79,11 @@
         android:label="@string/courses"
         android:fontFamily="@font/source_sans_pro_bold"
         tools:layout="@layout/fragment_courses"
-        />
+        >
+        <action
+            android:id="@+id/action_navigation_course_fragment_to_coursesDetailsFragment"
+            app:destination="@id/coursesDetailsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_panneaux_fragment"
@@ -87,20 +91,52 @@
         android:label="@string/panneaux"
         android:fontFamily="@font/source_sans_pro_bold"
         tools:layout="@layout/fragment_panneau"
-        />
+        >
+        <action
+            android:id="@+id/action_navigation_panneaux_fragment_to_panneauDetailsFragment"
+            app:destination="@id/panneauDetailsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_examen_fragment"
         android:name="com.amango.permisdeconduire.fragments.ExamenFragment"
          android:label="@string/exam"
         tools:layout="@layout/fragment_examen"
-        />
+        >
+        <action
+            android:id="@+id/action_navigation_examen_fragment_to_examenQuizzFragment"
+            app:destination="@id/examenQuizzFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_setting_fragment"
         android:name="com.amango.permisdeconduire.fragments.SettingFragment"
         android:label="@string/settings"
         tools:layout="@layout/fragment_setting"
-        />
+        >
+        <action
+            android:id="@+id/action_navigation_setting_fragment_to_aproposFragment"
+            app:destination="@id/aproposFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/coursesDetailsFragment"
+        android:name="com.amango.permisdeconduire.fragments.subfragment.CoursesDetailsFragment"
+        android:label="fragment_courses_details"
+        tools:layout="@layout/fragment_courses_details" />
+    <fragment
+        android:id="@+id/aproposFragment"
+        android:name="com.amango.permisdeconduire.fragments.subfragment.AproposFragment"
+        android:label="fragment_apropos"
+        tools:layout="@layout/fragment_apropos" />
+    <fragment
+        android:id="@+id/panneauDetailsFragment"
+        android:name="com.amango.permisdeconduire.fragments.subfragment.PanneauDetailsFragment"
+        android:label="fragment_panneau_details"
+        tools:layout="@layout/fragment_panneau_details" />
+    <fragment
+        android:id="@+id/examenQuizzFragment"
+        android:name="com.amango.permisdeconduire.fragments.subfragment.ExamenQuizzFragment"
+        android:label="ExamenQuizzFragment"
+        tools:layout="@layout/fragment_examen_quizz"/>
 
 </navigation>

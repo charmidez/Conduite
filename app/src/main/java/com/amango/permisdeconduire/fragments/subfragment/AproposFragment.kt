@@ -19,14 +19,7 @@ class AproposFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentAproposBinding.inflate(inflater,container,false)
         val root : View = binding.root
-        //val v = inflater.inflate(R.layout.fragment_apropos, container, false)
 
-        MobileAds.initialize(root.context)
-        val adRequest = AdRequest.Builder().build()
-        //v.adView_fragment_apropos_bottom.loadAd(adRequest)
-        binding.adViewFragmentAproposBottom.loadAd(adRequest)
-        binding.adViewFragmentAproposTop.loadAd(adRequest)
-        //v.adView_fragment_apropos_top.loadAd(adRequest)
 
         return root
     }

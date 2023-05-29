@@ -19,14 +19,6 @@ import com.google.android.gms.ads.MobileAds
 
 class PanneauDetailsFragment : Fragment() {
 
-    /*
-* private var _binding: FragmentSuivietcBinding? = null
-private val binding get() = _binding!!
-*
-* _binding = FragmentSuivietcBinding.inflate(inflater, container, false)
-val root: View = binding.root
-* */
-
     private var _binding : FragmentPanneauDetailsBinding? = null
     private val binding get() = _binding!!
 
@@ -39,10 +31,10 @@ val root: View = binding.root
         //val v = inflater.inflate(R.layout.fragment_panneau_details, container, false)
         val repo = DataRepository()
 
-        MobileAds.initialize(root.context)
+        /*MobileAds.initialize(root.context)
         val adRequest = AdRequest.Builder().build()
         binding.adViewFragmentPanneauDetailsBottom.loadAd(adRequest)
-        binding.adViewFragmentPanneauDetailsTop.loadAd(adRequest)
+        binding.adViewFragmentPanneauDetailsTop.loadAd(adRequest)*/
 
         val args = this.arguments
         var idTypePanneaux = args?.getInt("id")

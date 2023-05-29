@@ -1,65 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/padding_size_in_activity">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView_titre_type_panneau"
+    <ImageView
+        android:id="@+id/imageView_item"
         android:layout_width="108dp"
         android:layout_height="108dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginLeft="4dp"
-        android:elevation="@dimen/elevation"
-        app:cardCornerRadius="@dimen/corner_raduis_courses"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        android:layout_margin="@dimen/padding_size_in_activity"
+        android:background="@drawable/background_rounded_white"
+        android:elevation="@dimen/padd"
+        app:srcCompat="@drawable/ic_splash_screen" />
 
-        <ImageView
-            android:id="@+id/imageView_type_panneau"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/padding_size_in_activity"
-            app:srcCompat="@drawable/ic_splash_screen" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical">
 
-    </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/textView_titre_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="@dimen/padd"
+            android:fontFamily="@font/source_sans_pro_bold"
+            android:text="Type De Panneau"
+            android:textColor="@color/bluesecond_cobaltturquoise"
+            android:textSize="@dimen/title_size" />
 
+        <TextView
+            android:id="@+id/textView_description_item"
+            style="@style/textMidTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:maxLines="4"
+            android:paddingBottom="8dp"
+            android:text="@string/lorem"
+            android:textColor="@color/bluedark_gunmetal" />
+    </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView_titre_type_panneau"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:fontFamily="@font/source_sans_pro_bold"
-        android:text="Type De Panneau"
-        android:textColor="@color/bluesecond_cobaltturquoise"
-        android:textSize="@dimen/title_size"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/cardView_titre_type_panneau"
-        app:layout_constraintTop_toTopOf="@+id/cardView_titre_type_panneau"
-        tools:ignore="NotSibling" />
-
-    <TextView
-        android:id="@+id/textView_description_type_panneau"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="2dp"
-        android:fontFamily="@font/source_sans_pro_light_italic"
-        android:paddingBottom="8dp"
-        android:text="Lorem ip sum"
-        android:textColor="@color/bluesecond_cobaltturquoise"
-        app:layout_constraintBottom_toBottomOf="@+id/cardView_titre_type_panneau"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:maxLines="4"
-        android:ellipsize="end"
-        app:layout_constraintStart_toStartOf="@+id/textView_titre_type_panneau"
-        app:layout_constraintTop_toBottomOf="@+id/textView_titre_type_panneau"
-        app:layout_constraintVertical_bias="0.0" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

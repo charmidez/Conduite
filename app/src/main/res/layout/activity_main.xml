@@ -1,53 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:ignore="MissingPrefix"
-    android:layout_width="match_parent"
     tools:viewBindingIgnore="false">
-
-    <!--com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:elevation="0dp"
-        android:padding="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_container"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5">
-
-        <TextView
-            android:id="@+id/textView_title_fragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/source_sans_pro_bold"
-            android:text=""
-            android:padding="@dimen/padding_size_in_activity"
-            android:gravity="center"
-            android:textColor="@color/white_alabaster"
-            android:textSize="@dimen/title_size" />
-
-    </com.google.android.material.appbar.AppBarLayout-->
-
-    <!--TextView
-        android:id="@+id/textView_notabene_of_weeks"
-        android:layout_width="match_parent"
-        android:layout_height="46dp"
-        android:text="Main"
-        android:textAlignment="center"
-        android:gravity="center"
-        android:layout_margin="@dimen/all_margin"
-        android:fontFamily="@font/source_sans_pro_bold"
-        android:textColor="@color/white"
-        android:layout_gravity="center"
-        android:background="@drawable/rounded_buttonview"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" /-->
 
     <fragment
         android:id="@+id/nav_host_fragment_contenair_activity_main"
@@ -55,52 +14,22 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/my_nav"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-         />
+        app:navGraph="@navigation/my_nav" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/white_alabaster"
-
+        app:itemIconTint="@drawable/item_bottom_nav_color"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu"
-        app:itemIconTint="@drawable/item_bottom_nav_color"
-        app:labelVisibilityMode="labeled" />
-
-    <!--FrameLayout
-        android:id="@+id/fragment_container"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:paddingLeft="0dp"
-        android:paddingRight="0dp"
-        android:background="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" >
-
-        <TextView
-            android:id="@+id/textView_chargement"
-            android:layout_width="match_parent"
-            android:layout_height="204dp"
-            android:text="@string/loading"
-            android:textAlignment="center"
-            android:textColor="@color/grey_loading"
-            android:fontFamily="@font/source_sans_pro_regular"
-            android:gravity="center"
-            android:textSize="20dp"/>
-    </FrameLayout-->
-
-    <!--
-    app:itemHorizontalTranslationEnabled="true"
-    -->
+        app:menu="@menu/menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,5 @@
 
     <solid android:color="@color/bluesecond_cobaltturquoise" />
     <corners
-        android:bottomRightRadius="8dp"
-        android:bottomLeftRadius="8dp" />
+        android:radius="@dimen/radius" />
 </shape>

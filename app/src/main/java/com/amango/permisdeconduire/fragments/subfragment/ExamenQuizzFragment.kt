@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import com.amango.permisdeconduire.R
@@ -70,14 +71,14 @@ class ExamenQuizzFragment : Fragment() , View.OnClickListener {
         MobileAds.initialize(root.context)
         val adRequest = AdRequest.Builder().build()
         //v.adView_fragment_examen_quizz_bottom.loadAd(adRequest)
-        binding.adViewFragmentExamenQuizzBottom.loadAd(adRequest)
+        //binding.adViewFragmentExamenQuizzBottom.loadAd(adRequest)
 
         itemQuizz = DataRepository.Singleton.itemExam
 
         repo.updateDataQuizzQuestion {
         //function
         defaultOptionView = fun(){
-            val cardView_options = ArrayList<CardView>()
+            val cardView_options = ArrayList<LinearLayout>()
             val textView_options = ArrayList<TextView>()
             cardView_options.add(0,cardViewOne)
             textView_options.add(0,txtViewOne)
@@ -97,7 +98,7 @@ class ExamenQuizzFragment : Fragment() , View.OnClickListener {
             btnSubmit.setBackgroundColor(Color.parseColor("#00FFFFFF"))
 
             for (option in cardView_options){
-                option.setCardBackgroundColor(Color.parseColor("#F4F3EE"))
+                option.setBackgroundColor(Color.parseColor("#F4F3EE"))
                 option.setElevation(8F)
             }
             for (option in textView_options){
@@ -217,13 +218,14 @@ class ExamenQuizzFragment : Fragment() , View.OnClickListener {
         }
     }
 
-    private fun selectedOptionView (cv : CardView, tv : TextView, selectedOptionNum : Int){
+    private fun selectedOptionView (cv : LinearLayout, tv : TextView, selectedOptionNum : Int){
         defaultOptionView()
         mSelectedOption = selectedOptionNum
         tv.setTypeface(tv.typeface, Typeface.BOLD)
         tv.setTextColor(Color.parseColor("#F4F3EE"))
 
-        cv.setCardBackgroundColor(Color.parseColor("#31F4F3EE"))
+        //cv.setCardBackgroundColor(Color.parseColor("#31F4F3EE"))
+        cv.setBackgroundColor(Color.parseColor("#31F4F3EE"))
         cv.setElevation(1F)
 
         binding.buttonSubmit.isEnabled = true
@@ -233,17 +235,17 @@ class ExamenQuizzFragment : Fragment() , View.OnClickListener {
         binding.buttonSubmit.setTextColor(Color.parseColor("#F4F3EE"))
     }
 
-    private fun answerOptionView (cv : CardView, tv : TextView){
+    private fun answerOptionView (cv : LinearLayout, tv : TextView){
         tv.setTypeface(tv.typeface, Typeface.BOLD)
         tv.setTextColor(Color.parseColor("#F4F3EE"))
-        cv.setCardBackgroundColor(Color.parseColor("#5FAD41"))
+        cv.setBackgroundColor(Color.parseColor("#5FAD41"))
         cv.setElevation(8F)
     }
 
-    private fun wrongAnswerOptionView (cv : CardView, tv : TextView){
+    private fun wrongAnswerOptionView (cv : LinearLayout, tv : TextView){
         tv.setTypeface(tv.typeface, Typeface.BOLD)
         tv.setTextColor(Color.parseColor("#F4F3EE"))
-        cv.setCardBackgroundColor(Color.parseColor("#EE6352"))
+        cv.setBackgroundColor(Color.parseColor("#EE6352"))
         cv.setElevation(8F)
     }
 

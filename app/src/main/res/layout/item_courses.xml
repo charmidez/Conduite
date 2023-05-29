@@ -1,47 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/materialCardView"
+
+    <ImageView
+        android:id="@+id/imageView_item"
         android:layout_width="46dp"
         android:layout_height="46dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
+        android:layout_margin="@dimen/padd_mid"
+        android:background="@drawable/background_rounded_white"
         android:elevation="@dimen/elevation"
         android:padding="@dimen/padding_size_in_activity"
-        app:cardCornerRadius="@dimen/corner_raduis_courses"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:srcCompat="@drawable/ic_launcher" />
 
-        <ImageView
-            android:id="@+id/imageView_courses_item"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/padding_size_in_activity"
-            app:srcCompat="@drawable/ic_launcher" />
-    </com.google.android.material.card.MaterialCardView>
 
     <TextView
-        android:id="@+id/textView_titre_course_item"
+        android:id="@+id/textView_titre_item"
         style="@style/textTitle"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_gravity="center"
         android:text="@string/app_courses_item"
-        android:textColor="@color/red_fireopal"
-        app:layout_constraintBottom_toBottomOf="@+id/materialCardView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/materialCardView"
-        app:layout_constraintTop_toTopOf="@+id/materialCardView"
-        tools:ignore="InvalidId" />
+        android:textColor="@color/red_fireopal" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!--TextView
+        android:id="@+id/textView_description_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:ignore="" /-->
+
+</LinearLayout>

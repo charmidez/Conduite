@@ -1,18 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/constraintLayout_panneau_detail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="@dimen/padding_size_in_activity"
-        android:paddingRight="@dimen/padding_size_in_activity"
+    android:orientation="vertical"
+android:padding="@dimen/padd"
         tools:context=".fragments.subfragment.PanneauDetailsFragment">
 
-        <TextView
+    <TextView
+        android:id="@+id/textView_title_fragment_panneaux"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/titleFragment"
+        android:padding="@dimen/padd"
+        android:background="@drawable/rounded_buttonview"
+        android:gravity="center"
+        android:text="Type De Panneau"
+        android:textAlignment="center" />
+
+        <!--TextView
             android:id="@+id/textView_titre_categorie_panneau"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/padding_size_in_activity"
             android:layout_marginBottom="8dp"
@@ -22,8 +33,7 @@
             android:textSize="@dimen/title_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/adView_fragment_panneau_details_top" />
+            app:layout_constraintStart_toStartOf="parent" /-->
 
         <!--TextView
             android:id="@+id/textView_desc_type_panneau"
@@ -42,21 +52,22 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="?android:attr/listDivider"
+        android:layout_marginTop="@dimen/padd"
         app:layout_constraintBottom_toBottomOf="@+id/textView_titre_categorie_panneau"
         app:layout_constraintEnd_toEndOf="@+id/textView_titre_categorie_panneau"
         app:layout_constraintStart_toStartOf="@+id/textView_titre_categorie_panneau"
         app:layout_constraintTop_toBottomOf="@+id/textView_titre_categorie_panneau" />
 
-        <ListView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/panneau_details_listView"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/adView_fragment_panneau_details_bottom"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/padd"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider3" />
 
-        <com.google.android.gms.ads.AdView
+        <!--com.google.android.gms.ads.AdView
             android:id="@+id/adView_fragment_panneau_details_top"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -65,9 +76,9 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintLeft_toRightOf="parent" />
+            app:layout_constraintLeft_toRightOf="parent" /-->
 
-        <com.google.android.gms.ads.AdView
+        <!--com.google.android.gms.ads.AdView
             android:id="@+id/adView_fragment_panneau_details_bottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -76,6 +87,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintLeft_toRightOf="parent" />
+            app:layout_constraintLeft_toRightOf="parent" /-->
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>

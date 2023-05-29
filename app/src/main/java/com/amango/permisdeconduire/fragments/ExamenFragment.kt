@@ -54,12 +54,6 @@ class ExamenFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View?  {
         _binding = FragmentExamenBinding.inflate(inflater,container,false)
         val root : View = binding.root
-        //var v = inflater.inflate(R.layout.fragment_examen, container, false)
-
-        MobileAds.initialize(root.context)
-        val adRequest = AdRequest.Builder().build()
-        //v.adView_fragment_examen_bottom.loadAd(adRequest)
-        binding.adViewFragmentExamenBottom.loadAd(adRequest)
 
         var myGridAdapter : MyGridAdapter
 
@@ -72,21 +66,10 @@ class ExamenFragment : Fragment() {
             val bundles = Bundle()
             val clickedId = charValues[position]
             clickedId.niveau.let { bundles.putInt("niveau", it!!) }
-            //replaceFragment(examenQuizzFragment)
         }
         return root
     }
 
-    /*
-    private fun replaceFragment(fragment : Fragment){
-        if (fragment !=null){
-            val transaction = fragmentManager?.beginTransaction()
-            transaction?.replace(R.id.fragment_container, fragment)
-            transaction?.addToBackStack(null)
-            transaction?.commit()
-        }
-    }
-    */
 
 }
 
