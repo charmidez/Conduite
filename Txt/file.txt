@@ -1,0 +1,24 @@
+        /*
+        val currentPosition = 1
+        val questionQuizz = itemQuizz!![mCurrentPosition - 1]
+        //val imgQuizzUrl = itemQuizz!![mCurrentPosition -1].imgUrl
+        //val optionOne = itemQuizz!![mCurrentPosition - 1].optionOne
+        //val optionTwo = itemQuizz!![mCurrentPosition - 1].optionTwo
+        //val optionThree = itemQuizz!![mCurrentPosition - 1].optionThree
+        //val optionFour = itemQuizz!![mCurrentPosition - 1].optionFour
+
+
+
+        v.progressBar_level_quizz.progress = mCurrentPosition
+        v.textView_progressBar.text = "$mCurrentPosition" + "/" + v.progressBar_level_quizz.max
+
+        v.textView_question.text = questionQuizz
+        Glide.with(v.context)
+            .load(imgQuizzUrl)
+            .centerCrop()
+            .into(v.imageView_question)
+        v.textView_optionOne.text = optionOne
+        v.textView_optionTwo.text = optionTwo
+        v.textView_optionThree.text = optionThree
+        v.textView_optionFour.text = optionFour
+        */
